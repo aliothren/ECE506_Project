@@ -1,0 +1,21 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+| Date         : Wed Nov 18 14:18:48 2026
+| Host         : compute.engr.arizona.edu running 64-bit AlmaLinux 9.8 (Olive Jaguar)
+| Command      : report_clock_networks -file /home/yuxinr/ece506/ffn-project/runs/K44/20261118T205854106482Z/implementation/clock_networks.rpt
+| Design       : ffn_system_wrapper
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+Clock Networks Report
+
+
+Constrained Clocks
+-------------------
+
+Clock clk_fpga_0 (100MHz)(endpoints: 18872 clock, 0 nonclock)
+PS7/FCLKCLK[0] (ffn_system_i/ps/inst/PS7_i)
+

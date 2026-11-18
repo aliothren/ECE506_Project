@@ -1,0 +1,48 @@
+{
+  "status": "pass",
+  "hwh": "/home/yuxinr/ece506/ffn-project/runs/K44/20261118T205854106482Z/overlay/ffn.hwh",
+  "interface": {
+    "reset": {
+      "aux_reset_active": 0,
+      "aux_reset_tied": 1,
+      "reset_net": "reset_peripheral_aresetn",
+      "clock_net": "ps_FCLK_CLK0"
+    },
+    "address_bits": 64,
+    "data_bits": 64,
+    "offsets": {
+      "parameters": [
+        24,
+        28
+      ],
+      "input": [
+        36,
+        40
+      ],
+      "output": [
+        48,
+        52
+      ],
+      "operation": 60,
+      "return": 16
+    },
+    "ddr_bytes": 536870912,
+    "control_base": 1073741824
+  },
+  "rejected_mutations": [
+    "aux_asserted",
+    "ip_reset_disconnected",
+    "ip_clock_disconnected",
+    "axi_disconnected",
+    "aux_polarity",
+    "external_polarity",
+    "locked_low",
+    "interconnect_reset",
+    "hp_clock",
+    "data_width",
+    "wrong_clock",
+    "disabled_hp",
+    "pointer_offset",
+    "control_base"
+  ]
+}

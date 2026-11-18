@@ -1,0 +1,3 @@
+config_id,run,source_hash,implementation_status,setup_wns_ns,hold_whs_ns,impl_LUT,impl_FF,impl_BRAM_tiles,impl_DSP,impl_BRAM_18K_equiv,board_status
+B11,runs/B11/20261118T204214272606Z,ec8086f1c88d6ad2b678ae71c30379840e6077cee36538f01273f3eec0b8d67f,pass,0.387,0.024,8931.0,16046.0,9.0,2.0,18.0,pass
+K44,runs/K44/20261118T205854106482Z,d0158f9e3653fd5248890709d3f7329c09ab3d4668d87ebdbbda1a5505d80049,pass,0.350,0.016,10264.0,18169.0,9.0,32.0,18.0,pass

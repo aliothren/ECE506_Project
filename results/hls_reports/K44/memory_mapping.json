@@ -1,0 +1,66 @@
+[
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_2_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_3_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w2_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w2_4_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w2_5_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w2_6_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 2,
+    "words": 512,
+    "bits": 64,
+    "banks": 1
+  }
+]

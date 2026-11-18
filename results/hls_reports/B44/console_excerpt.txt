@@ -1,0 +1,7 @@
+FFN_TEST_PASS P=4 Q=4 layout=0 models=9 inferences=206 mode=full
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:12; Allocated memory: 0.098 MB.
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:43; Allocated memory: 307.379 MB.
+FFN_TEST_PASS P=4 Q=4 layout=0 models=4 inferences=8 mode=rtl
+ERROR: [COSIM 212-4] *** C/RTL co-simulation finished: FAIL ***
+INFO: [HLS 200-2161] Finished Command cosim_design Elapsed time: 00:01:47; Allocated memory: 18.762 MB.

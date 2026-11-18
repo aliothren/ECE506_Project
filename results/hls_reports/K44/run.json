@@ -1,0 +1,45 @@
+{
+  "config": {
+    "config_id": "K44",
+    "P": "4",
+    "Q": "4",
+    "compute_pipeline": "on",
+    "requested_ii": "1",
+    "weight_layout": "packed",
+    "logical_banks_per_layer": "4",
+    "word_bits": "64",
+    "storage_type": "ram_1p",
+    "storage_impl": "bram",
+    "part": "xc7z020clg400-1",
+    "clock_ns": "10",
+    "planned_rtl_validation": "yes",
+    "planned_board_role": "candidate",
+    "status": "not_run"
+  },
+  "source_hash": "d0158f9e3653fd5248890709d3f7329c09ab3d4668d87ebdbbda1a5505d80049",
+  "source_files": {
+    "hls/dense.h": "1fbfd7241549c8f26d4fe77bbeead2dbc8b8eba85fcf30fa87ddde285e7e61e1",
+    "hls/ffn.cpp": "7780374639eb5711907ad898739e6664e5c5a7b842519124b721ee21f4e38a82",
+    "hls/ffn_test.cpp": "cb2ad7789c64001e55a5d1804355843676ba6dc296b032b91a27b3b8b9e145ba",
+    "hls/ffn_types.h": "8ab0379af2db37a90fbde73dc11d63e1b109cd6d06185bc617395febb99dbb1e",
+    "hls/run.tcl": "ea997828ad31c390680cb5785ce7e5a90eb9cbe7b4af4b2dd83e4e590348d2ca",
+    "hls/verify.tcl": "f7754d4443479257699402c2c08430eb03d783a8a5ade18bc00e323eb3469a84",
+    "reference/ffn_cpu.cpp": "aa0013abee4677b7938cc42d0adc0061cc0d921f61351dae18f89ce1f86321cb",
+    "reference/fixtures.h": "4f7affda5b8fb9751335d982209bfc888ef56d77fab056e64618957fbf1314b5",
+    "reference/golden.py": "40737501cd1b2f611aac363056823e496ce42e944c587a811b8b9a8ce5609a56",
+    "spec.md": "0649cda5981da2c397502267f518543d1209fbe4d68e0998d05b75e0f770d332"
+  },
+  "started_utc": "20261118T205854106482Z",
+  "cosim_requested": true,
+  "export_requested": true,
+  "status": "pass",
+  "command": [
+    "vitis-run",
+    "--mode",
+    "hls",
+    "--tcl",
+    "/home/yuxinr/ece506/ffn-project/runs/K44/20261118T205854106482Z/source/hls/run.tcl"
+  ],
+  "returncode": 0,
+  "finished_utc": "2026-11-18T21:04:00.295063+00:00"
+}

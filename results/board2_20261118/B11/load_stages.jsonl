@@ -1,0 +1,14 @@
+{"time": 1570804778.742465, "event": "preflight_pass", "stage": "preflight", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804779.9800417, "event": "metadata_parse_begin", "stage": "preflight", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804780.1778219, "event": "download_begin", "stage": "preflight", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804780.6101522, "event": "download_pass_no_PL_reads_yet", "stage": "programmed", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804781.440582, "event": "first_PL_read_begin", "stage": "programmed", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804781.4662707, "event": "control_and_unloaded_guards_pass", "stage": "control", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804781.9606106, "event": "buffers_pass", "stage": "allocated", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804782.5950787, "event": "smoke_begin", "stage": "allocated", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804782.627708, "event": "smoke_pass", "stage": "allocated", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804823.200401, "event": "validation_begin", "stage": "allocated", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804823.594415, "event": "validation_pass", "stage": "allocated", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804824.1987846, "event": "benchmark_begin", "stage": "allocated", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804829.054804, "event": "benchmark_pass", "stage": "allocated", "run": "20261118T204214272606Z", "pid": 629}
+{"time": 1570804830.1785638, "event": "closed_buffers_released", "stage": "closed", "run": "20261118T204214272606Z", "pid": 629}

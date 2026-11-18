@@ -1,0 +1,25 @@
+test_autorestart_after_launch_is_rejected (test_host_lifecycle.HostLifecycle) ... ok
+test_close_rechecks_idle_before_free (test_host_lifecycle.HostLifecycle) ... ok
+test_constructor_has_no_pynq_dependency_or_programming (test_host_lifecycle.HostLifecycle) ... ok
+test_correctness_failure_revokes_validation_and_preserves_buffers (test_host_lifecycle.HostLifecycle) ... ok
+test_done_can_precede_idle_and_clear_before_idle_is_seen (test_host_lifecycle.HostLifecycle) ... ok
+test_done_without_eventual_idle_times_out_and_preserves_buffers (test_host_lifecycle.HostLifecycle) ... ok
+test_early_call_does_not_access_hardware (test_host_lifecycle.HostLifecycle) ... ok
+test_guard_operations_do_not_write_dma_pointers (test_host_lifecycle.HostLifecycle) ... ok
+test_interrupt_during_first_read_is_protected (test_host_lifecycle.HostLifecycle) ... ok
+test_nonidle_and_autorestart_are_rejected_before_writes (test_host_lifecycle.HostLifecycle) ... ok
+test_parameter_load_accepts_legacy_numpy_filename_api (test_host_lifecycle.HostLifecycle) ... ok
+test_pointer_write_failure_is_protected (test_host_lifecycle.HostLifecycle) ... ok
+test_return_read_failure_is_protected (test_host_lifecycle.HostLifecycle) ... ok
+test_success_writes_both_pointer_halves_and_closes (test_host_lifecycle.HostLifecycle) ... ok
+test_timeout_blocks_relaunch_and_free (test_host_lifecycle.HostLifecycle) ... ok
+test_corrupt_marker_fails_closed (test_host_lifecycle.Ownership) ... ok
+test_dead_process_marker_survives_kernel_restart (test_host_lifecycle.Ownership) ... ok
+test_failed_acquirer_cannot_clear_another_owners_marker (test_host_lifecycle.Ownership) ... ok
+test_file_lock_blocks_another_process (test_host_lifecycle.Ownership) ... ok
+test_live_owner_is_retained_and_second_session_blocked (test_host_lifecycle.Ownership) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.358s
+
+OK

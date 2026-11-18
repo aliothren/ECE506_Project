@@ -1,0 +1,9 @@
+{
+  "configuration_count": 12,
+  "csim_inferences_per_configuration": 206,
+  "total_csim_inferences": 2472,
+  "all_csim_pass": true,
+  "all_synthesis_pass": true,
+  "hardware_source_hash": "d097f20e82170f32b897fb08fa7da09a041a65488a32b920a5fa8bcc1df04f53",
+  "board_tested": false
+}

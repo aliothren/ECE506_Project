@@ -1,0 +1,66 @@
+[
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_1_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_1_0_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_1_1_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w2_0_0_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w2_0_1_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w2_1_0_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w2_1_1_U",
+    "module": "p_ZZ3ffnPK7ap_uintILi64EES2_PS0_jE2w1_0_0_RAM_1P_BRAM_1R1W",
+    "BRAM_18K": 2,
+    "words": 2048,
+    "bits": 16,
+    "banks": 1
+  }
+]

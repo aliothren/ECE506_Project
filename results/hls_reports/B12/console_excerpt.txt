@@ -1,0 +1,4 @@
+FFN_TEST_PASS P=1 Q=2 layout=0 models=9 inferences=206 mode=full
+INFO: [SIM 211-1] CSim done with 0 errors.
+INFO: [HLS 200-2161] Finished Command csim_design Elapsed time: 00:00:11; Allocated memory: 0.094 MB.
+INFO: [HLS 200-2161] Finished Command csynth_design Elapsed time: 00:00:49; Allocated memory: 294.352 MB.

@@ -1,0 +1,15 @@
+{
+  "config": "K44",
+  "samples": 100,
+  "correct": true,
+  "scope": "Diagnostic phase timings with extra timestamps; separate from primary benchmark.",
+  "median_ns": {
+    "input_copy_flush_ns": 213680.03217503428,
+    "control_and_execution_ns": 475546.5197376907,
+    "output_invalidate_copy_ns": 328801.45590752363,
+    "total_ns": 1017953.5020142794
+  },
+  "numpy_version": "1.13.3",
+  "cpu_clock_mhz": 650.0,
+  "pl_clock_mhz": 100.0
+}

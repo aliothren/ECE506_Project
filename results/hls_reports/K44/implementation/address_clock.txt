@@ -1,0 +1,8 @@
+Part: xc7z020clg400-1
+PL requested MHz: 100
+PL actual MHz: 100.000000
+PL clock source: IO PLL
+/ffn_0/Data_m_axi_gmem/SEG_ps_HP0_DDR_LOWOCM offset=0x0000000000000000 range=0x0000000020000000
+/ffn_0/s_axi_control/Reg offset= range=0x00010000
+/ps/Data/SEG_ffn_0_Reg offset=0x40000000 range=0x00010000
+/ps/S_AXI_HP0/HP0_DDR_LOWOCM offset= range=0x20000000

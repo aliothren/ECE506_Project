@@ -1,0 +1,178 @@
+{
+  "metadata": {
+    "config": {
+      "config_id": "K44",
+      "P": "4",
+      "Q": "4",
+      "compute_pipeline": "on",
+      "requested_ii": "1",
+      "weight_layout": "packed",
+      "logical_banks_per_layer": "4",
+      "word_bits": "64",
+      "storage_type": "ram_1p",
+      "storage_impl": "bram",
+      "part": "xc7z020clg400-1",
+      "clock_ns": "10",
+      "planned_rtl_validation": "yes",
+      "planned_board_role": "candidate"
+    },
+    "run": "20261118T205854106482Z",
+    "source_hash": "d0158f9e3653fd5248890709d3f7329c09ab3d4668d87ebdbbda1a5505d80049",
+    "bit_sha256": "69f95be81171161e73e6ddbd4676ec1fbe5ba24dba0a8c0ea7a3c4624b128760",
+    "package_revision": "audit3",
+    "system": {
+      "system": "Linux",
+      "node": "pynq2",
+      "release": "4.19.0-xilinx-v2019.1",
+      "version": "#1 SMP PREEMPT Thu Oct 3 17:13:49 UTC 2019",
+      "machine": "armv7l",
+      "processor": "armv7l"
+    },
+    "python": "3.6.5",
+    "data_manifest": {
+      "format": "little-endian int16 raw / 1024",
+      "generator": "Python random.Random, randint",
+      "seeds": [
+        506,
+        507,
+        508
+      ],
+      "cases": [
+        {
+          "name": "random_506",
+          "inferences": 64
+        },
+        {
+          "name": "random_507",
+          "inferences": 64
+        },
+        {
+          "name": "random_508",
+          "inferences": 64
+        },
+        {
+          "name": "zero",
+          "inferences": 3
+        },
+        {
+          "name": "bias_only",
+          "inferences": 1
+        },
+        {
+          "name": "routing",
+          "inferences": 4
+        },
+        {
+          "name": "extremes",
+          "inferences": 2
+        },
+        {
+          "name": "cancellation",
+          "inferences": 2
+        },
+        {
+          "name": "rounding",
+          "inferences": 2
+        }
+      ],
+      "sha256": {
+        "bias_only/hidden.bin": "9a10f8d4ec46255b0d23b5d394ca378c596840405875630da048bc52cc03754c",
+        "bias_only/input.bin": "38723a2e5e8a17aa7950dc008209944e898f69a7bd10a23c839d341e935fd5ca",
+        "bias_only/output.bin": "33f36ee50f9cc1816ab06056b1dec6cbfd0376a6f9ba761adc35364a94b3ef20",
+        "bias_only/params.bin": "010aa5d653afa3812fe22b7f03b9c6470d6414f0035150f94ff017f24b934f43",
+        "cancellation/hidden.bin": "6965500f3194ee935b40fe0fe7feaa6bc38538c2693a257d71c47e8a7381e6ac",
+        "cancellation/input.bin": "204be6deeddd8ab0597752cd9284bb6e5759a68ff41b8e5797b1bb4561acd56a",
+        "cancellation/output.bin": "5341e6b2646979a70e57653007a1f310169421ec9bdd9f1a5648f75ade005af1",
+        "cancellation/params.bin": "3858ddee1873d6b720fcc3c85a1e4e7124f15e7d14d86b8215b04757428a79e9",
+        "extremes/hidden.bin": "890e8b43fe0b245dbef6136380ecbeee6834c7e59ac5aac9f1cc2c0c4ed7030f",
+        "extremes/input.bin": "204be6deeddd8ab0597752cd9284bb6e5759a68ff41b8e5797b1bb4561acd56a",
+        "extremes/output.bin": "1f9d07bd46903547d4576d622ad0c906bfb70b6b253c70d38d960f5a9329d6f2",
+        "extremes/params.bin": "419d2ff743cf4594a452a629ac0b1f8edc1be4ccc80c30bd7dcc299091f4b75f",
+        "index.txt": "6664a86e3251ac2d7a9ebe308813b654f6eb79805f6a3e2037f100a31da119c8",
+        "random_506/hidden.bin": "f77cc209aa58583b83bda8cf7f1bc1924081f45e16de236e384ee1ba515145dc",
+        "random_506/input.bin": "f9fbf611215330ef10e2394cebe4a3c49666315d018a93f98b3d0a98a99c3eb6",
+        "random_506/output.bin": "b018ebf03fb1d2e6e7ee5e60e7b85ca995212da3e7d175b478fc510d2eba8fda",
+        "random_506/params.bin": "938ac18347f2dbb7c800094a82388e962a6fc871caf61efc7d41e78f403cef6e",
+        "random_507/hidden.bin": "78ede458151a7d44d324d7659e0b53a727f59f1655f367a26ce629ce178dcebb",
+        "random_507/input.bin": "c74d44adfce8635fda2c6a7de0b38bf7980cd351bb940da906c5c0384d39b214",
+        "random_507/output.bin": "1c0452af61fd3aa7a76bc35c88b19dc1316e6c26f723a099fd1cce02b62016f8",
+        "random_507/params.bin": "a658ca55e128548dc01c15ac4cd14edf21e8e4433aa16f3a5fb3f13ccb2a841a",
+        "random_508/hidden.bin": "8c2f09b7cc810e5605b3bd1c4f9e943a302a09477c10e87691cfb85edeadf7d7",
+        "random_508/input.bin": "e2a964bc7cbbc5af1f8baccb30b6823c4631a72b631eaf9e5ce3537d79cc14a8",
+        "random_508/output.bin": "34997e97c1d1183b821fa1fb4cb9c9a43c9091d1f712f36ecd511bda54d6c9a7",
+        "random_508/params.bin": "5bdbf1de6224acb6b9dc7f2e4b3f91638a1948a3a43bbab8c4767bbe75f162d7",
+        "rounding/hidden.bin": "ef2ea1d2924e03b3756c363b4d950ffc5698bedc9b40b29900b29dd8b22070e8",
+        "rounding/input.bin": "a8ca1a3f1ec8bbc70a47fdb7013a8ecb2b685ffb19b4efe09a8c1b93756c03d3",
+        "rounding/output.bin": "e0d8f3a3bed9595041fc89c0e1b872154ab5ae69e767b719bc67e8865d51f018",
+        "rounding/params.bin": "30c251e9efdf38b9d90fc9351ee3e8126f8089a73d56533710a261f82afc7b10",
+        "routing/hidden.bin": "8bfc7e3e5563b9eb73b41e0b72e794ca1336fcb907d6b7e791afb4f1def7c84f",
+        "routing/input.bin": "c2c7711bee24082b461fc46963d350d67ff9e3e6fd2be1337dcccdd19a34fcbd",
+        "routing/output.bin": "0aa56684d9501ac9f16e5ae50f2e08b7c69b2e71dd6dcad6ac714b713924a37f",
+        "routing/params.bin": "cb21ec8f1d1017cc59c38bbd7ecdf85d2735bfb82008f9ac62e43efdbc028410",
+        "zero/hidden.bin": "ef115a0e0c15cdc41958ca46b5b14b456115f4baec5e3ca68599d2a8f435e3b8",
+        "zero/input.bin": "fb7402fac21a44587897100a0264a7959307ef9e0f13086e4b56322fda4e3dad",
+        "zero/output.bin": "a1a4f5721c1c4610af7f71078f3a68c330536d679803b0e0507ee8dc10c5dfca",
+        "zero/params.bin": "812ac52d39d7d13197f0e88581534d95eff4fd2b43b8018d85c891cdfe6f7789"
+      }
+    },
+    "pynq_version": "2.5",
+    "board_model": "unknown",
+    "pl_clock_mhz": 100.0
+  },
+  "results": [
+    {
+      "case": "random_506",
+      "inferences": 64,
+      "load_ns": 2694326,
+      "correct": true
+    },
+    {
+      "case": "random_507",
+      "inferences": 64,
+      "load_ns": 1237449,
+      "correct": true
+    },
+    {
+      "case": "random_508",
+      "inferences": 64,
+      "load_ns": 1152975,
+      "correct": true
+    },
+    {
+      "case": "zero",
+      "inferences": 3,
+      "load_ns": 1144622,
+      "correct": true
+    },
+    {
+      "case": "bias_only",
+      "inferences": 1,
+      "load_ns": 1156234,
+      "correct": true
+    },
+    {
+      "case": "routing",
+      "inferences": 4,
+      "load_ns": 1139458,
+      "correct": true
+    },
+    {
+      "case": "extremes",
+      "inferences": 2,
+      "load_ns": 1163138,
+      "correct": true
+    },
+    {
+      "case": "cancellation",
+      "inferences": 2,
+      "load_ns": 1152025,
+      "correct": true
+    },
+    {
+      "case": "rounding",
+      "inferences": 2,
+      "load_ns": 1141108,
+      "correct": true
+    }
+  ]
+}

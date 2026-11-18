@@ -1,0 +1,44 @@
+{
+  "status": "pass",
+  "archives": [
+    {
+      "file": "deploy/B11_20261118T204214272606Z_audit3.zip",
+      "config": "B11",
+      "revision": "audit3",
+      "sha256": "e437e4cc2e03cd56040e0e0ac480f47986a7fd452f58a5f9da8c0116621b069e",
+      "hashed_files": 62,
+      "notebook_code_cells": 10,
+      "rejected_package_faults": [
+        "truncated_or_corrupt_bit",
+        "modified_host",
+        "empty_hash_manifest",
+        "wrong_part",
+        "wrong_clock",
+        "negative_timing",
+        "wrong_register_map",
+        "wrong_bit_audit_binding"
+      ],
+      "board_tested": false
+    },
+    {
+      "file": "deploy/K44_20261118T205854106482Z_audit3.zip",
+      "config": "K44",
+      "revision": "audit3",
+      "sha256": "d0786123df1463947d24036fb17cc36f1d6e38460a0d122772b681a426393a72",
+      "hashed_files": 62,
+      "notebook_code_cells": 10,
+      "rejected_package_faults": [
+        "truncated_or_corrupt_bit",
+        "modified_host",
+        "empty_hash_manifest",
+        "wrong_part",
+        "wrong_clock",
+        "negative_timing",
+        "wrong_register_map",
+        "wrong_bit_audit_binding"
+      ],
+      "board_tested": false
+    }
+  ],
+  "physical_board_accessed": false
+}

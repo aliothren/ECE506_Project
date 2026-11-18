@@ -1,0 +1,25 @@
+{
+  "board": 2,
+  "config": "K44",
+  "kernel_id": "639e61ee-3d44-4705-a61f-66629dbd1e7d",
+  "reservation_end": "2026-11-18T16:00:00-07:00",
+  "started_utc": "2026-11-18T22:26:59.009331+00:00",
+  "completed": [
+    "health",
+    "setup",
+    "preflight",
+    "program",
+    "control",
+    "buffers",
+    "smoke",
+    "validate",
+    "benchmark",
+    "close",
+    "cpu",
+    "files"
+  ],
+  "remote_directory": "ffn_yuxinr_20261118_222708_K44",
+  "zip_sha256": "d0786123df1463947d24036fb17cc36f1d6e38460a0d122772b681a426393a72",
+  "profile_source_sha256": "8049cdb543dcd54106af6ccb5cb42b45aff4711a22eb18e4999c7024398cf81f",
+  "kernel_stopped_utc": "2026-11-18T22:28:39.326886+00:00"
+}

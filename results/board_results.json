@@ -1,0 +1,164 @@
+{
+  "status": "pass",
+  "board": 2,
+  "hostname": "pynq2",
+  "date": "2026-11-18",
+  "boot_id": "cef3946a-3c65-457d-9571-7c58974ee5eb",
+  "pl_clock_mhz": 100,
+  "cpu_clock_mhz": 650.0,
+  "configs": {
+    "B11": {
+      "status": "pass",
+      "run": "20261118T204214272606Z",
+      "package_revision": "audit3",
+      "zip_sha256": "e437e4cc2e03cd56040e0e0ac480f47986a7fd452f58a5f9da8c0116621b069e",
+      "bit_sha256": "4fe23701b714389d38f48accf248761168e19b49ecc6d67c4b111b52163b6ad0",
+      "hwh_sha256": "838d5bb17c358c6aeebc5cc65ca555c850a3075a9fe01436a19fa8ab02e876c8",
+      "host_sha256": "4b3904062a9bd5fc7c9edd3d3c210cb0b2d13eeae3b5b386d9fd84e9fb339080",
+      "correctness_inferences": 206,
+      "fpga_host": {
+        "calls": 3000,
+        "median_us": 1103.9905,
+        "p95_us": 1157.0153500000001,
+        "min_us": 1086.209,
+        "max_us": 1504.677,
+        "round_median_us": [
+          1103.417,
+          1102.7045,
+          1105.723
+        ]
+      },
+      "cpu_compute": {
+        "calls": 3000,
+        "median_us": 143.4985,
+        "p95_us": 146.283,
+        "min_us": 141.28,
+        "max_us": 203.455,
+        "round_median_us": [
+          143.462,
+          143.6,
+          143.437
+        ]
+      },
+      "profile": {
+        "config": "B11",
+        "samples": 100,
+        "correct": true,
+        "scope": "Diagnostic phase timings with extra timestamps; separate from primary benchmark.",
+        "median_ns": {
+          "input_copy_flush_ns": 214744.47567015886,
+          "control_and_execution_ns": 616778.5613797605,
+          "output_invalidate_copy_ns": 329553.96454781294,
+          "total_ns": 1160441.490355879
+        },
+        "numpy_version": "1.13.3",
+        "cpu_clock_mhz": 650.0,
+        "pl_clock_mhz": 100.0
+      },
+      "load_us": 1469.274,
+      "normal_close": true,
+      "kernel_stopped_utc": "2026-11-18T22:26:41.091503+00:00",
+      "evidence_directory": "results/board2_20261118/B11",
+      "evidence_sha256": {
+        "board_environment.json": "e486ef8e97c802adb56cac4e583485d339a0430bc9927e122d9232d2afc7cc20",
+        "board_health_after.json": "50cf1165db396ad21cdea24e2fe9d360e37fe10340aeba168cc5104b959aa1a2",
+        "board_profile.json": "31789639bee5b9e4d915911b67d0d2d7a1a3fabb4877057b7e9512bac7b1ff9d",
+        "board_profile_code.py": "8049cdb543dcd54106af6ccb5cb42b45aff4711a22eb18e4999c7024398cf81f",
+        "board_profile_raw.csv": "29586a0323ad20a22c1a6f626cd6a82ed15dfdca8ffd59da4395a327a92e7aa7",
+        "board_raw.csv": "319c1e7abd010bb86ce552c054c3b5cc86426f6d173719b6ce8d412be2392594",
+        "board_results.json": "83f83399169b8aec61f286353259741b8c9b6e0047e37c7d5b3c8a669e01de29",
+        "board_validation.json": "2981305e9714ce5d67324f6dbab04a0bc4d6010ca45e962318481755470ce7f4",
+        "cpu_raw.csv": "fb5fd3a69cad891407f79038456260e9b43af4503fcc195b53dde317d327a466",
+        "cpu_results.json": "0bb98587886c60b4f50be84116ebcc63300f1e666cdaa790a3c69d25c0b693a3",
+        "cpu_run.log": "e0164bef85e0c2ed77af07e61a293ab40537dedbb62749763b1b104a9aefe6ad",
+        "execution.log": "db4198b4dd3744d69b3b8f970ab7e2a76d68cf3e82823946aed5892900854c28",
+        "ffn_board_executed.ipynb": "f0718075a0c11f146670f2cb12c9b32e88e28c0acef66b70bbddfe3a227fea11",
+        "load_stages.jsonl": "2f5b246adb731d553277365dd4cc79c3aad0f5faefb99ebef15274e5bb81f5d5",
+        "manifest.json": "e208072626ac97d3868d6fc1cac117bb66cfa95d39b2004bfdf28ad0458acfed",
+        "remote_run.json": "1288d62a35295a63c2ab479a914826fe0e8784eda10316aa33fd629f27341c52"
+      }
+    },
+    "K44": {
+      "status": "pass",
+      "run": "20261118T205854106482Z",
+      "package_revision": "audit3",
+      "zip_sha256": "d0786123df1463947d24036fb17cc36f1d6e38460a0d122772b681a426393a72",
+      "bit_sha256": "69f95be81171161e73e6ddbd4676ec1fbe5ba24dba0a8c0ea7a3c4624b128760",
+      "hwh_sha256": "04bfd8544c6d9df1d6d078ce71663023a545f47c66cdf3eec6bcdf4f27d617ae",
+      "host_sha256": "4b3904062a9bd5fc7c9edd3d3c210cb0b2d13eeae3b5b386d9fd84e9fb339080",
+      "correctness_inferences": 206,
+      "fpga_host": {
+        "calls": 3000,
+        "median_us": 964.715,
+        "p95_us": 1061.4075999999998,
+        "min_us": 919.578,
+        "max_us": 10314.825,
+        "round_median_us": [
+          964.669,
+          968.777,
+          962.7695
+        ]
+      },
+      "cpu_compute": {
+        "calls": 3000,
+        "median_us": 142.971,
+        "p95_us": 144.78884999999997,
+        "min_us": 140.775,
+        "max_us": 386.8,
+        "round_median_us": [
+          143.0105,
+          142.963,
+          142.954
+        ]
+      },
+      "profile": {
+        "config": "K44",
+        "samples": 100,
+        "correct": true,
+        "scope": "Diagnostic phase timings with extra timestamps; separate from primary benchmark.",
+        "median_ns": {
+          "input_copy_flush_ns": 213680.03217503428,
+          "control_and_execution_ns": 475546.5197376907,
+          "output_invalidate_copy_ns": 328801.45590752363,
+          "total_ns": 1017953.5020142794
+        },
+        "numpy_version": "1.13.3",
+        "cpu_clock_mhz": 650.0,
+        "pl_clock_mhz": 100.0
+      },
+      "load_us": 1868.545,
+      "normal_close": true,
+      "kernel_stopped_utc": "2026-11-18T22:28:39.326886+00:00",
+      "evidence_directory": "results/board2_20261118/K44",
+      "evidence_sha256": {
+        "board_environment.json": "a79479beda62b022ab43511694201a00d186cc66f83ed8a5394ff8cdd37ce8d2",
+        "board_health_after.json": "62120dd31c9c342b49f66be1d3015a20596abf8bb4cbc003f19bfd536f977b00",
+        "board_profile.json": "711efd5da300bdcea01433b4da2342b20a9babb5c8dbd174967638cf4828a09e",
+        "board_profile_code.py": "8049cdb543dcd54106af6ccb5cb42b45aff4711a22eb18e4999c7024398cf81f",
+        "board_profile_raw.csv": "cff651986432114aad7f46072cb7bb103e8a1ac41e2b0f9b22efd43ee17fb83f",
+        "board_raw.csv": "905da91d2ac691b1317c6e05dd84635ab225cd19f6b155f7eecb862b493f5580",
+        "board_results.json": "10358dbff2194f47f0baba45eafeffe06f44e2c944b1e2590d864918443e3bad",
+        "board_validation.json": "59e15863d50787c79daf419f9921f9cdcb84a42403cd5365b9e4e0d24c00521b",
+        "cpu_raw.csv": "4406577ca06f75df4d5b67b2f3f5d12cdcc5c709279cade4de59e4f4156e3290",
+        "cpu_results.json": "a6d1c8294d5aa559881862106a2be6a762d9c17d83db98e1431547598723681d",
+        "cpu_run.log": "e0164bef85e0c2ed77af07e61a293ab40537dedbb62749763b1b104a9aefe6ad",
+        "execution.log": "07988db8c8de8ea3be9858927f19f75a942b56c0e35727d863969702fcc55411",
+        "ffn_board_executed.ipynb": "720f11263c8f8b0568a671e7fb843522c27a7417d69141a64c382195e8ee38ce",
+        "load_stages.jsonl": "f495513767c8a4ad5587a53ceb17db2daf693a0179a320b734c567a1bfb1458b",
+        "manifest.json": "662686a0554b1a4a0435e7fd6cf1523c8159dd5b93e302826cee2dd1122525df",
+        "remote_run.json": "9df72bd5305d45a4e7d748449469400fdba5add496032f6031b9aed8d620e8de"
+      }
+    }
+  },
+  "fpga_host_speedup_B11_over_K44": 1.1443695806533536,
+  "fpga_host_over_cpu_time_ratio": {
+    "B11": 7.693394007602867,
+    "K44": 6.747627141168489
+  },
+  "boundaries": {
+    "FPGA_host": "Python input copy/flush, control/execute/poll/status, output invalidate/copy; parameters resident",
+    "CPU_compute": "Compiled scalar C++ computation on resident arrays; no file I/O or validation",
+    "profile": "100 extra calls with per-phase timestamps, separate from primary 3000-call measurement"
+  },
+  "scope": "One PYNQ-Z2 reservation and boot; no Linux isolation/affinity tuning; no board hardware cycle counter"
+}

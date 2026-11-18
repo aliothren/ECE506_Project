@@ -1,0 +1,15 @@
+{
+  "config": "B11",
+  "samples": 100,
+  "correct": true,
+  "scope": "Diagnostic phase timings with extra timestamps; separate from primary benchmark.",
+  "median_ns": {
+    "input_copy_flush_ns": 214744.47567015886,
+    "control_and_execution_ns": 616778.5613797605,
+    "output_invalidate_copy_ns": 329553.96454781294,
+    "total_ns": 1160441.490355879
+  },
+  "numpy_version": "1.13.3",
+  "cpu_clock_mhz": 650.0,
+  "pl_clock_mhz": 100.0
+}

@@ -1,0 +1,25 @@
+{
+  "board": 2,
+  "config": "B11",
+  "kernel_id": "da1b5973-fdb0-486c-b62a-ddc4d3e6f764",
+  "reservation_end": "2026-11-18T16:00:00-07:00",
+  "started_utc": "2026-11-18T22:25:18.908105+00:00",
+  "completed": [
+    "health",
+    "setup",
+    "preflight",
+    "program",
+    "control",
+    "buffers",
+    "smoke",
+    "validate",
+    "benchmark",
+    "close",
+    "cpu",
+    "files"
+  ],
+  "remote_directory": "ffn_yuxinr_20261118_222527_B11",
+  "zip_sha256": "e437e4cc2e03cd56040e0e0ac480f47986a7fd452f58a5f9da8c0116621b069e",
+  "profile_source_sha256": "8049cdb543dcd54106af6ccb5cb42b45aff4711a22eb18e4999c7024398cf81f",
+  "kernel_stopped_utc": "2026-11-18T22:26:41.091503+00:00"
+}

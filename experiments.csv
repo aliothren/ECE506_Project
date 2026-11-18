@@ -1,0 +1,13 @@
+config_id,P,Q,compute_pipeline,requested_ii,weight_layout,logical_banks_per_layer,word_bits,storage_type,storage_impl,part,clock_ns,planned_rtl_validation,planned_board_role,status
+S00,1,1,off,,scalar,1,16,ram_1p,bram,xc7z020clg400-1,10,no,none,synth_pass
+B11,1,1,on,1,cyclic_banked,1,16,ram_1p,bram,xc7z020clg400-1,10,yes,baseline,board_pass
+B12,1,2,on,1,cyclic_banked,2,16,ram_1p,bram,xc7z020clg400-1,10,if_selected,candidate,synth_pass
+B14,1,4,on,1,cyclic_banked,4,16,ram_1p,bram,xc7z020clg400-1,10,if_selected,candidate,synth_pass
+B21,2,1,on,1,cyclic_banked,2,16,ram_1p,bram,xc7z020clg400-1,10,if_selected,candidate,synth_pass
+B22,2,2,on,1,cyclic_banked,4,16,ram_1p,bram,xc7z020clg400-1,10,if_selected,candidate,synth_pass
+B24,2,4,on,1,cyclic_banked,8,16,ram_1p,bram,xc7z020clg400-1,10,if_selected,candidate,synth_pass
+B41,4,1,on,1,cyclic_banked,4,16,ram_1p,bram,xc7z020clg400-1,10,if_selected,candidate,synth_pass
+B42,4,2,on,1,cyclic_banked,8,16,ram_1p,bram,xc7z020clg400-1,10,if_selected,candidate,synth_pass
+B44,4,4,on,1,cyclic_banked,16,16,ram_1p,bram,xc7z020clg400-1,10,yes,candidate,rtl_pass
+U44,4,4,on,1,unpartitioned,1,16,ram_1p,bram,xc7z020clg400-1,10,yes,none,rtl_pass
+K44,4,4,on,1,packed,4,64,ram_1p,bram,xc7z020clg400-1,10,yes,candidate,board_pass

@@ -1,0 +1,13 @@
+# Preserve bytes used by fixture, release and experiment hash manifests.
+* -text
+*.bin binary
+*.zip binary
+*.png binary
+*.jpg binary
+
+# Raw tool reports and CSV records intentionally retain their original spacing.
+*.csv whitespace=cr-at-eol
+/results/hls_reports/** -whitespace
+/results/board2_20261118/** -whitespace
+/vivado/board_files/** -whitespace
+/tests/rtl/** whitespace=-blank-at-eof

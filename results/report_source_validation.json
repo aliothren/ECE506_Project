@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "file": "report/ffn_report.tex",
+  "sha256": "85481f316a4a1016e1d1127c987e5b7eb36a4682831c74c282d4c9e1faeae815",
+  "environments_and_braces_balanced": true,
+  "labels_citations_figures_resolve": true,
+  "hls_rtl_memory_implementation_coverage_tables_match": true,
+  "board_table_matches_raw_validated_summary": true,
+  "release_runtime_source_hashes_match": true,
+  "tex_engine_run": false,
+  "report_pdf_generated": false
+}

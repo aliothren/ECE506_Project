@@ -1,0 +1,30 @@
+{
+  "fpga_manager": "operating",
+  "guard": {
+    "boot_id": "cef3946a-3c65-457d-9571-7c58974ee5eb",
+    "state": "closed",
+    "pid": 629
+  },
+  "kernel_log_after": [
+    "[   11.080830] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready",
+    "[   11.806960] random: crng init done",
+    "[   11.806976] random: 7 urandom warning(s) missed due to ratelimiting",
+    "[   21.831457] systemd-journald[914]: File /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal corrupted or uncleanly shut down, renaming and replacing.",
+    "[   21.869712] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[   40.235314] fpga_manager fpga0: writing base.bin to Xilinx Zynq FPGA Manager",
+    "[  734.391119] fpga_manager fpga0: writing base.bin to Xilinx Zynq FPGA Manager",
+    "[97440.808905] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[195486.296846] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[293713.840872] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[392074.721678] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[490191.710843] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[588546.079919] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[686934.108524] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[785049.364321] systemd-journald[914]: Failed to set ACL on /var/log/journal/692bc65a506d4a2aade09c705326a92a/user-1000.journal, ignoring: Operation not supported",
+    "[878445.123502] fpga_manager fpga0: writing bnn.bin to Xilinx Zynq FPGA Manager",
+    "[879238.482053] fpga_manager fpga0: writing ffn.bin to Xilinx Zynq FPGA Manager",
+    "[879361.048481] fpga_manager fpga0: writing ffn.bin to Xilinx Zynq FPGA Manager",
+    "[879505.540915] fpga_manager fpga0: writing ffn.bin to Xilinx Zynq FPGA Manager",
+    "[879763.515454] fpga_manager fpga0: writing ffn.bin to Xilinx Zynq FPGA Manager"
+  ]
+}

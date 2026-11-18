@@ -1,0 +1,45 @@
+{
+  "status": "board_tests_pass",
+  "physical_board_accessed": true,
+  "board_tested": true,
+  "hardware_changed_by_audit": false,
+  "host_test_cases": 20,
+  "host_tests_normal_and_optimized": "pass",
+  "hwh_faults_rejected_per_overlay": 14,
+  "rtl_audits": {
+    "B11": {
+      "file": "runs/B11/20261118T204214272606Z/control_verification/control_verification.json",
+      "status": "pass",
+      "bit_sha256": "4fe23701b714389d38f48accf248761168e19b49ecc6d67c4b111b52163b6ad0",
+      "hwh_sha256": "838d5bb17c358c6aeebc5cc65ca555c850a3075a9fe01436a19fa8ab02e876c8",
+      "tests": [
+        "reset",
+        "registers",
+        "lifecycle"
+      ]
+    },
+    "K44": {
+      "file": "runs/K44/20261118T205854106482Z/control_verification/control_verification.json",
+      "status": "pass",
+      "bit_sha256": "69f95be81171161e73e6ddbd4676ec1fbe5ba24dba0a8c0ea7a3c4624b128760",
+      "hwh_sha256": "04bfd8544c6d9df1d6d078ce71663023a545f47c66cdf3eec6bcdf4f27d617ae",
+      "tests": [
+        "reset",
+        "registers",
+        "lifecycle"
+      ]
+    }
+  },
+  "release_validation": "results/release_validation.json",
+  "report": "report/ffn_report.tex",
+  "report_pdf_generated": false,
+  "limitations": [
+    "PS7 and SmartConnect behavior not simulated",
+    "No board DDR/PYNQ/cache test yet",
+    "Python cannot interrupt stalled MMIO",
+    "Locks coordinate this host only"
+  ],
+  "board_results": "results/board_results.json",
+  "package_revision": "audit3",
+  "board2_session_closed": true
+}

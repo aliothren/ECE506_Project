@@ -1,0 +1,136 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
+| Date         : Wed Nov 18 14:18:41 2026
+| Host         : compute.engr.arizona.edu running 64-bit AlmaLinux 9.8 (Olive Jaguar)
+| Command      : report_utilization -hierarchical -file /home/yuxinr/ece506/ffn-project/runs/K44/20261118T205854106482Z/implementation/utilization_hierarchical.rpt
+| Design       : ffn_system_wrapper
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Routed
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------------------------------------------------------+-------------------------------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+|                               Instance                              |                                  Module                                 | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs  | RAMB36 | RAMB18 | DSP Blocks |
++---------------------------------------------------------------------+-------------------------------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+| ffn_system_wrapper                                                  |                                                                   (top) |      10264 |       9885 |     200 |  179 | 18169 |      9 |      0 |         32 |
+|   ffn_system_i                                                      |                                                              ffn_system |      10264 |       9885 |     200 |  179 | 18169 |      9 |      0 |         32 |
+|     memory_smc                                                      |                                                 ffn_system_memory_smc_0 |        932 |        721 |     200 |   11 |   792 |      0 |      0 |          0 |
+|       inst                                                          |                                         ffn_system_memory_smc_0_bd_b1e8 |        932 |        721 |     200 |   11 |   792 |      0 |      0 |          0 |
+|         m00_exit_pipeline                                           |                    ffn_system_memory_smc_0_m00_exit_pipeline_imp_O5QW36 |        403 |        396 |       0 |    7 |   297 |      0 |      0 |          0 |
+|           m00_exit                                                  |                                  ffn_system_memory_smc_0_bd_b1e8_m00e_0 |        403 |        396 |       0 |    7 |   297 |      0 |      0 |          0 |
+|             inst                                                    |                             ffn_system_memory_smc_0_sc_exit_v1_0_17_top |        403 |        396 |       0 |    7 |   297 |      0 |      0 |          0 |
+|               splitter_inst                                         |                        ffn_system_memory_smc_0_sc_exit_v1_0_17_splitter |        380 |        373 |       0 |    7 |   276 |      0 |      0 |          0 |
+|                 gen_axi3.splitter_inst                              |                       ffn_system_memory_smc_0_sc_exit_v1_0_17_axi3_conv |        377 |        370 |       0 |    7 |   276 |      0 |      0 |          0 |
+|                   (gen_axi3.splitter_inst)                          |                       ffn_system_memory_smc_0_sc_exit_v1_0_17_axi3_conv |        106 |        106 |       0 |    0 |   125 |      0 |      0 |          0 |
+|                   ar_cmd_reg                                        |                    ffn_system_memory_smc_0_sc_util_v1_0_4_axi_reg_stall |        106 |        106 |       0 |    0 |    60 |      0 |      0 |          0 |
+|                   aw_cmd_reg                                        |                 ffn_system_memory_smc_0_sc_util_v1_0_4_axi_reg_stall_19 |        102 |        102 |       0 |    0 |    60 |      0 |      0 |          0 |
+|         s00_entry_pipeline                                          |                  ffn_system_memory_smc_0_s00_entry_pipeline_imp_1MVX78X |        104 |        101 |       0 |    3 |    60 |      0 |      0 |          0 |
+|         s00_nodes                                                   |                           ffn_system_memory_smc_0_s00_nodes_imp_1HOW9NV |        413 |        213 |     200 |    0 |   405 |      0 |      0 |          0 |
+|           s00_ar_node                                               |                                  ffn_system_memory_smc_0_bd_b1e8_sarn_0 |         96 |         44 |      52 |    0 |    91 |      0 |      0 |          0 |
+|             inst                                                    |                             ffn_system_memory_smc_0_sc_node_v1_0_18_top |         96 |         44 |      52 |    0 |    91 |      0 |      0 |          0 |
+|               inst_mi_handler                                       |                      ffn_system_memory_smc_0_sc_node_v1_0_18_mi_handler |         92 |         40 |      52 |    0 |    86 |      0 |      0 |          0 |
+|                 gen_normal_area.inst_fifo_node_payld                |                 ffn_system_memory_smc_0_sc_node_v1_0_18_fifo__xdcDup__1 |         92 |         40 |      52 |    0 |    84 |      0 |      0 |          0 |
+|                   gen_xpm_memory_fifo.inst_fifo                     |       ffn_system_memory_smc_0_sc_util_v1_0_4_xpm_memory_fifo__xdcDup__1 |         92 |         40 |      52 |    0 |    84 |      0 |      0 |          0 |
+|                     gen_mem_rep[0].inst_xpm_memory                  |                            ffn_system_memory_smc_0_xpm_memory_sdpram__2 |         52 |          0 |      52 |    0 |    62 |      0 |      0 |          0 |
+|                       xpm_memory_base_inst                          |                              ffn_system_memory_smc_0_xpm_memory_base__2 |         52 |          0 |      52 |    0 |    62 |      0 |      0 |          0 |
+|           s00_aw_node                                               |                                  ffn_system_memory_smc_0_bd_b1e8_sawn_0 |         96 |         44 |      52 |    0 |    91 |      0 |      0 |          0 |
+|             inst                                                    |             ffn_system_memory_smc_0_sc_node_v1_0_18_top__parameterized0 |         96 |         44 |      52 |    0 |    91 |      0 |      0 |          0 |
+|               inst_mi_handler                                       |      ffn_system_memory_smc_0_sc_node_v1_0_18_mi_handler__parameterized0 |         92 |         40 |      52 |    0 |    86 |      0 |      0 |          0 |
+|                 gen_normal_area.inst_fifo_node_payld                |                            ffn_system_memory_smc_0_sc_node_v1_0_18_fifo |         92 |         40 |      52 |    0 |    84 |      0 |      0 |          0 |
+|                   gen_xpm_memory_fifo.inst_fifo                     |                  ffn_system_memory_smc_0_sc_util_v1_0_4_xpm_memory_fifo |         92 |         40 |      52 |    0 |    84 |      0 |      0 |          0 |
+|                     gen_mem_rep[0].inst_xpm_memory                  |                               ffn_system_memory_smc_0_xpm_memory_sdpram |         52 |          0 |      52 |    0 |    62 |      0 |      0 |          0 |
+|                       xpm_memory_base_inst                          |                                 ffn_system_memory_smc_0_xpm_memory_base |         52 |          0 |      52 |    0 |    62 |      0 |      0 |          0 |
+|           s00_r_node                                                |                                   ffn_system_memory_smc_0_bd_b1e8_srn_0 |         87 |         43 |      44 |    0 |    94 |      0 |      0 |          0 |
+|             inst                                                    |             ffn_system_memory_smc_0_sc_node_v1_0_18_top__parameterized2 |         87 |         43 |      44 |    0 |    94 |      0 |      0 |          0 |
+|               inst_mi_handler                                       |      ffn_system_memory_smc_0_sc_node_v1_0_18_mi_handler__parameterized2 |         82 |         38 |      44 |    0 |    89 |      0 |      0 |          0 |
+|                 gen_normal_area.inst_fifo_node_payld                |            ffn_system_memory_smc_0_sc_node_v1_0_18_fifo__parameterized1 |         82 |         38 |      44 |    0 |    87 |      0 |      0 |          0 |
+|                   gen_xpm_memory_fifo.inst_fifo                     |  ffn_system_memory_smc_0_sc_util_v1_0_4_xpm_memory_fifo__parameterized1 |         82 |         38 |      44 |    0 |    87 |      0 |      0 |          0 |
+|                     gen_mem_rep[0].inst_xpm_memory                  |               ffn_system_memory_smc_0_xpm_memory_sdpram__parameterized1 |         44 |          0 |      44 |    0 |    65 |      0 |      0 |          0 |
+|                       xpm_memory_base_inst                          |                 ffn_system_memory_smc_0_xpm_memory_base__parameterized1 |         44 |          0 |      44 |    0 |    65 |      0 |      0 |          0 |
+|           s00_w_node                                                |                                   ffn_system_memory_smc_0_bd_b1e8_swn_0 |         96 |         44 |      52 |    0 |   101 |      0 |      0 |          0 |
+|             inst                                                    |             ffn_system_memory_smc_0_sc_node_v1_0_18_top__parameterized3 |         96 |         44 |      52 |    0 |   101 |      0 |      0 |          0 |
+|               inst_mi_handler                                       |      ffn_system_memory_smc_0_sc_node_v1_0_18_mi_handler__parameterized3 |         92 |         40 |      52 |    0 |    96 |      0 |      0 |          0 |
+|                 gen_normal_area.inst_fifo_node_payld                |            ffn_system_memory_smc_0_sc_node_v1_0_18_fifo__parameterized2 |         92 |         40 |      52 |    0 |    94 |      0 |      0 |          0 |
+|                   gen_xpm_memory_fifo.inst_fifo                     |  ffn_system_memory_smc_0_sc_util_v1_0_4_xpm_memory_fifo__parameterized2 |         92 |         40 |      52 |    0 |    94 |      0 |      0 |          0 |
+|                     gen_mem_rep[0].inst_xpm_memory                  |               ffn_system_memory_smc_0_xpm_memory_sdpram__parameterized2 |         52 |          0 |      52 |    0 |    72 |      0 |      0 |          0 |
+|                       xpm_memory_base_inst                          |                 ffn_system_memory_smc_0_xpm_memory_base__parameterized2 |         52 |          0 |      52 |    0 |    72 |      0 |      0 |          0 |
+|     control_smc                                                     |                                                ffn_system_control_smc_0 |        469 |        468 |       0 |    1 |   587 |      0 |      0 |          0 |
+|       inst                                                          |                                        ffn_system_control_smc_0_bd_6702 |        469 |        468 |       0 |    1 |   587 |      0 |      0 |          0 |
+|         s00_entry_pipeline                                          |                 ffn_system_control_smc_0_s00_entry_pipeline_imp_1DVIBI1 |        403 |        403 |       0 |    0 |   416 |      0 |      0 |          0 |
+|           s00_mmu                                                   |                               ffn_system_control_smc_0_bd_6702_s00mmu_0 |        163 |        163 |       0 |    0 |   195 |      0 |      0 |          0 |
+|             inst                                                    |                             ffn_system_control_smc_0_sc_mmu_v1_0_15_top |        163 |        163 |       0 |    0 |   195 |      0 |      0 |          0 |
+|               gen_endpoint.decerr_slave_inst                        |                    ffn_system_control_smc_0_sc_mmu_v1_0_15_decerr_slave |         54 |         54 |       0 |    0 |    41 |      0 |      0 |          0 |
+|               ar_reg_stall                                          |   ffn_system_control_smc_0_sc_util_v1_0_4_axi_reg_stall__parameterized0 |         43 |         43 |       0 |    0 |    68 |      0 |      0 |          0 |
+|               aw_reg_stall                                          | ffn_system_control_smc_0_sc_util_v1_0_4_axi_reg_stall__parameterized0_7 |         45 |         45 |       0 |    0 |    68 |      0 |      0 |          0 |
+|           s00_si_converter                                          |                               ffn_system_control_smc_0_bd_6702_s00sic_0 |        233 |        233 |       0 |    0 |   189 |      0 |      0 |          0 |
+|             inst                                                    |                    ffn_system_control_smc_0_sc_si_converter_v1_0_15_top |        233 |        233 |       0 |    0 |   189 |      0 |      0 |          0 |
+|               gen_axilite_conv.axilite_conv_inst                    |           ffn_system_control_smc_0_sc_si_converter_v1_0_15_axilite_conv |        231 |        231 |       0 |    0 |   185 |      0 |      0 |          0 |
+|         s00_nodes                                                   |                          ffn_system_control_smc_0_s00_nodes_imp_1A6VFZ7 |         45 |         45 |       0 |    0 |   132 |      0 |      0 |          0 |
+|     ffn_0                                                           |                                                      ffn_system_ffn_0_0 |       8846 |       8680 |       0 |  166 | 16757 |      9 |      0 |         32 |
+|       inst                                                          |                                                  ffn_system_ffn_0_0_ffn |       8846 |       8680 |       0 |  166 | 16757 |      9 |      0 |         32 |
+|         (inst)                                                      |                                                  ffn_system_ffn_0_0_ffn |          1 |          0 |       0 |    1 |  4344 |      0 |      0 |          0 |
+|         control_s_axi_U                                             |                                    ffn_system_ffn_0_0_ffn_control_s_axi |        272 |        272 |       0 |    0 |   280 |      0 |      0 |          0 |
+|         gmem_m_axi_U                                                |                                       ffn_system_ffn_0_0_ffn_gmem_m_axi |       1227 |       1064 |       0 |  163 |  1801 |      1 |      0 |          0 |
+|           bus_read                                                  |                                  ffn_system_ffn_0_0_ffn_gmem_m_axi_read |        393 |        393 |       0 |    0 |   628 |      0 |      0 |          0 |
+|             rreq_burst_conv                                         |                    ffn_system_ffn_0_0_ffn_gmem_m_axi_burst_converter_78 |        286 |        286 |       0 |    0 |   462 |      0 |      0 |          0 |
+|               burst_sequential                                      |                   ffn_system_ffn_0_0_ffn_gmem_m_axi_burst_sequential_79 |        286 |        286 |       0 |    0 |   462 |      0 |      0 |          0 |
+|                 (burst_sequential)                                  |                   ffn_system_ffn_0_0_ffn_gmem_m_axi_burst_sequential_79 |        170 |        170 |       0 |    0 |   323 |      0 |      0 |          0 |
+|                 rs_req                                              |                          ffn_system_ffn_0_0_ffn_gmem_m_axi_reg_slice_80 |        116 |        116 |       0 |    0 |   139 |      0 |      0 |          0 |
+|             rs_rdata                                                |             ffn_system_ffn_0_0_ffn_gmem_m_axi_reg_slice__parameterized3 |         71 |         71 |       0 |    0 |   135 |      0 |      0 |          0 |
+|           bus_write                                                 |                                 ffn_system_ffn_0_0_ffn_gmem_m_axi_write |        414 |        395 |       0 |   19 |   694 |      0 |      0 |          0 |
+|             wreq_burst_conv                                         |                       ffn_system_ffn_0_0_ffn_gmem_m_axi_burst_converter |        281 |        281 |       0 |    0 |   452 |      0 |      0 |          0 |
+|               burst_sequential                                      |                      ffn_system_ffn_0_0_ffn_gmem_m_axi_burst_sequential |        281 |        281 |       0 |    0 |   452 |      0 |      0 |          0 |
+|                 (burst_sequential)                                  |                      ffn_system_ffn_0_0_ffn_gmem_m_axi_burst_sequential |        168 |        168 |       0 |    0 |   321 |      0 |      0 |          0 |
+|                 rs_req                                              |                             ffn_system_ffn_0_0_ffn_gmem_m_axi_reg_slice |        113 |        113 |       0 |    0 |   131 |      0 |      0 |          0 |
+|             wreq_throttle                                           |                              ffn_system_ffn_0_0_ffn_gmem_m_axi_throttle |        107 |         89 |       0 |   18 |   219 |      0 |      0 |          0 |
+|               (wreq_throttle)                                       |                              ffn_system_ffn_0_0_ffn_gmem_m_axi_throttle |          7 |          7 |       0 |    0 |    83 |      0 |      0 |          0 |
+|               rs_req                                                |             ffn_system_ffn_0_0_ffn_gmem_m_axi_reg_slice__parameterized1 |         43 |         43 |       0 |    0 |    75 |      0 |      0 |          0 |
+|           load_unit_0                                               |                                  ffn_system_ffn_0_0_ffn_gmem_m_axi_load |        171 |        137 |       0 |   34 |   184 |      1 |      0 |          0 |
+|             (load_unit_0)                                           |                                  ffn_system_ffn_0_0_ffn_gmem_m_axi_load |          1 |          1 |       0 |    0 |    69 |      0 |      0 |          0 |
+|             buff_rdata                                              |                  ffn_system_ffn_0_0_ffn_gmem_m_axi_fifo__parameterized4 |         50 |         50 |       0 |    0 |    37 |      1 |      0 |          0 |
+|             fifo_rreq                                               |               ffn_system_ffn_0_0_ffn_gmem_m_axi_fifo__parameterized0_72 |        122 |         88 |       0 |   34 |    78 |      0 |      0 |          0 |
+|               U_fifo_srl                                            |                ffn_system_ffn_0_0_ffn_gmem_m_axi_srl__parameterized0_73 |        104 |         70 |       0 |   34 |    64 |      0 |      0 |          0 |
+|           store_unit_0                                              |                                 ffn_system_ffn_0_0_ffn_gmem_m_axi_store |        250 |        140 |       0 |  110 |   295 |      0 |      0 |          0 |
+|             (store_unit_0)                                          |                                 ffn_system_ffn_0_0_ffn_gmem_m_axi_store |          2 |          2 |       0 |    0 |    77 |      0 |      0 |          0 |
+|             buff_wdata                                              |                  ffn_system_ffn_0_0_ffn_gmem_m_axi_fifo__parameterized1 |        101 |         29 |       0 |   72 |    92 |      0 |      0 |          0 |
+|               U_fifo_srl                                            |                   ffn_system_ffn_0_0_ffn_gmem_m_axi_srl__parameterized1 |         73 |          1 |       0 |   72 |    72 |      0 |      0 |          0 |
+|             fifo_wreq                                               |                  ffn_system_ffn_0_0_ffn_gmem_m_axi_fifo__parameterized0 |         51 |         18 |       0 |   33 |    76 |      0 |      0 |          0 |
+|               U_fifo_srl                                            |                   ffn_system_ffn_0_0_ffn_gmem_m_axi_srl__parameterized0 |         36 |          3 |       0 |   33 |    62 |      0 |      0 |          0 |
+|         grp_ffn_Pipeline_READ_INPUT_fu_1085                         |                          ffn_system_ffn_0_0_ffn_ffn_Pipeline_READ_INPUT |        285 |        285 |       0 |    0 |  1036 |      0 |      0 |          0 |
+|           (grp_ffn_Pipeline_READ_INPUT_fu_1085)                     |                          ffn_system_ffn_0_0_ffn_ffn_Pipeline_READ_INPUT |        273 |        273 |       0 |    0 |  1034 |      0 |      0 |          0 |
+|         grp_ffn_Pipeline_WRITE_OUTPUT_fu_1688                       |                        ffn_system_ffn_0_0_ffn_ffn_Pipeline_WRITE_OUTPUT |        274 |        274 |       0 |    0 |    72 |      0 |      0 |          0 |
+|           (grp_ffn_Pipeline_WRITE_OUTPUT_fu_1688)                   |                        ffn_system_ffn_0_0_ffn_ffn_Pipeline_WRITE_OUTPUT |          1 |          1 |       0 |    0 |    70 |      0 |      0 |          0 |
+|           flow_control_loop_pipe_sequential_init_U                  |        ffn_system_ffn_0_0_ffn_flow_control_loop_pipe_sequential_init_70 |        273 |        273 |       0 |    0 |     2 |      0 |      0 |          0 |
+|         grp_ffn_compute_fu_1156                                     |                                      ffn_system_ffn_0_0_ffn_ffn_compute |       3908 |       3906 |       0 |    2 |  5606 |      0 |      0 |         32 |
+|           (grp_ffn_compute_fu_1156)                                 |                                      ffn_system_ffn_0_0_ffn_ffn_compute |          0 |          0 |       0 |    0 |  2966 |      0 |      0 |          0 |
+|           grp_dense_128_64_false_s_fu_2084                          |                             ffn_system_ffn_0_0_ffn_dense_128_64_false_s |       2477 |       2476 |       0 |    1 |  1672 |      0 |      0 |         16 |
+|             (grp_dense_128_64_false_s_fu_2084)                      |                             ffn_system_ffn_0_0_ffn_dense_128_64_false_s |       1884 |       1884 |       0 |    0 |  1083 |      0 |      0 |          0 |
+|             grp_dense_128_64_false_Pipeline_INPUT_GROUP_fu_1920     |          ffn_system_ffn_0_0_ffn_dense_128_64_false_Pipeline_INPUT_GROUP |        598 |        597 |       0 |    1 |   589 |      0 |      0 |         16 |
+|               (grp_dense_128_64_false_Pipeline_INPUT_GROUP_fu_1920) |          ffn_system_ffn_0_0_ffn_dense_128_64_false_Pipeline_INPUT_GROUP |         41 |         40 |       0 |    1 |   587 |      0 |      0 |          0 |
+|               flow_control_loop_pipe_sequential_init_U              |        ffn_system_ffn_0_0_ffn_flow_control_loop_pipe_sequential_init_39 |        557 |        557 |       0 |    0 |     2 |      0 |      0 |          0 |
+|           grp_dense_64_128_true_s_fu_1560                           |                              ffn_system_ffn_0_0_ffn_dense_64_128_true_s |       1431 |       1430 |       0 |    1 |   968 |      0 |      0 |         16 |
+|             (grp_dense_64_128_true_s_fu_1560)                       |                              ffn_system_ffn_0_0_ffn_dense_64_128_true_s |        801 |        801 |       0 |    0 |   380 |      0 |      0 |          0 |
+|             grp_dense_64_128_true_Pipeline_INPUT_GROUP_fu_2136      |           ffn_system_ffn_0_0_ffn_dense_64_128_true_Pipeline_INPUT_GROUP |        638 |        637 |       0 |    1 |   588 |      0 |      0 |         16 |
+|               (grp_dense_64_128_true_Pipeline_INPUT_GROUP_fu_2136)  |           ffn_system_ffn_0_0_ffn_dense_64_128_true_Pipeline_INPUT_GROUP |        625 |        624 |       0 |    1 |   586 |      0 |      0 |          0 |
+|         grp_load_layer_128_64_s_fu_2030                             |                              ffn_system_ffn_0_0_ffn_load_layer_128_64_s |        664 |        664 |       0 |    0 |  1287 |      0 |      0 |          0 |
+|           (grp_load_layer_128_64_s_fu_2030)                         |                              ffn_system_ffn_0_0_ffn_load_layer_128_64_s |         99 |         99 |       0 |    0 |  1275 |      0 |      0 |          0 |
+|           grp_load_layer_128_64_Pipeline_LOAD_BIAS_fu_322           |             ffn_system_ffn_0_0_ffn_load_layer_128_64_Pipeline_LOAD_BIAS |        565 |        565 |       0 |    0 |    12 |      0 |      0 |          0 |
+|             (grp_load_layer_128_64_Pipeline_LOAD_BIAS_fu_322)       |             ffn_system_ffn_0_0_ffn_load_layer_128_64_Pipeline_LOAD_BIAS |        548 |        548 |       0 |    0 |    10 |      0 |      0 |          0 |
+|         grp_load_layer_64_128_s_fu_1759                             |                              ffn_system_ffn_0_0_ffn_load_layer_64_128_s |       2219 |       2219 |       0 |    0 |  2331 |      0 |      0 |          0 |
+|           (grp_load_layer_64_128_s_fu_1759)                         |                              ffn_system_ffn_0_0_ffn_load_layer_64_128_s |         91 |         91 |       0 |    0 |  2255 |      0 |      0 |          0 |
+|           grp_load_layer_64_128_Pipeline_LOAD_BIAS_fu_448           |             ffn_system_ffn_0_0_ffn_load_layer_64_128_Pipeline_LOAD_BIAS |       2128 |       2128 |       0 |    0 |    76 |      0 |      0 |          0 |
+|             (grp_load_layer_64_128_Pipeline_LOAD_BIAS_fu_448)       |             ffn_system_ffn_0_0_ffn_load_layer_64_128_Pipeline_LOAD_BIAS |       2104 |       2104 |       0 |    0 |    74 |      0 |      0 |          0 |
++---------------------------------------------------------------------+-------------------------------------------------------------------------+------------+------------+---------+------+-------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+

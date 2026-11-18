@@ -1,0 +1,9 @@
+random_506 64
+random_507 64
+random_508 64
+zero 3
+bias_only 1
+routing 4
+extremes 2
+cancellation 2
+rounding 2

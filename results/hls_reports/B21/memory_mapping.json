@@ -1,0 +1,34 @@
+[
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 4,
+    "words": 4096,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 4,
+    "words": 4096,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w2_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 4,
+    "words": 4096,
+    "bits": 16,
+    "banks": 1
+  },
+  {
+    "name": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w2_2_U",
+    "module": "ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_RAM_1P_BRAM_bkb",
+    "BRAM_18K": 4,
+    "words": 4096,
+    "bits": 16,
+    "banks": 1
+  }
+]

@@ -1,0 +1,237 @@
+
+
+================================================================
+== Vitis HLS Report for 'dense_64_128_true_Pipeline_INPUT_GROUP'
+================================================================
+* Date:           Wed Nov 18 13:53:40 2026
+
+* Version:        2025.1 (Build 6135595 on May 21 2025)
+* Project:        project
+* Solution:       solution (Vivado IP Flow Target)
+* Product family: zynq
+* Target device:  xc7z020-clg400-1
+
+
+================================================================
+== Performance Estimates
+================================================================
++ Timing: 
+    * Summary: 
+    +--------+----------+----------+------------+
+    |  Clock |  Target  | Estimated| Uncertainty|
+    +--------+----------+----------+------------+
+    |ap_clk  |  10.00 ns|  6.389 ns|     2.70 ns|
+    +--------+----------+----------+------------+
+
++ Latency: 
+    * Summary: 
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |  Latency (cycles) |  Latency (absolute) |  Interval |                    Pipeline                    |
+    |   min   |   max   |    min   |    max   | min | max |                      Type                      |
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+    |       69|       69|  0.690 us|  0.690 us|   65|   65|  loop auto-rewind stp (delay=0 clock cycles(s))|
+    +---------+---------+----------+----------+-----+-----+------------------------------------------------+
+
+    + Detail: 
+        * Instance: 
+        N/A
+
+        * Loop: 
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+        |               |  Latency (cycles) | Iteration|  Initiation Interval  | Trip |          |
+        |   Loop Name   |   min   |   max   |  Latency |  achieved |   target  | Count| Pipelined|
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+        |- INPUT_GROUP  |       67|       67|         5|          1|          1|    64|       yes|
+        +---------------+---------+---------+----------+-----------+-----------+------+----------+
+
+
+
+================================================================
+== Utilization Estimates
+================================================================
+* Summary: 
++-----------------+---------+-----+--------+-------+-----+
+|       Name      | BRAM_18K| DSP |   FF   |  LUT  | URAM|
++-----------------+---------+-----+--------+-------+-----+
+|DSP              |        -|    2|       -|      -|    -|
+|Expression       |        -|    -|       0|     43|    -|
+|FIFO             |        -|    -|       -|      -|    -|
+|Instance         |        -|    -|       0|    273|    -|
+|Memory           |        -|    -|       -|      -|    -|
+|Multiplexer      |        -|    -|       0|     72|    -|
+|Register         |        -|    -|     173|     32|    -|
++-----------------+---------+-----+--------+-------+-----+
+|Total            |        0|    2|     173|    420|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Available        |      280|  220|  106400|  53200|    0|
++-----------------+---------+-----+--------+-------+-----+
+|Utilization (%)  |        0|   ~0|      ~0|     ~0|    0|
++-----------------+---------+-----+--------+-------+-----+
+
++ Detail: 
+    * Instance: 
+    +----------------------------+------------------------+---------+----+---+-----+-----+
+    |          Instance          |         Module         | BRAM_18K| DSP| FF| LUT | URAM|
+    +----------------------------+------------------------+---------+----+---+-----+-----+
+    |sparsemux_129_6_16_1_1_U67  |sparsemux_129_6_16_1_1  |        0|   0|  0|  273|    0|
+    +----------------------------+------------------------+---------+----+---+-----+-----+
+    |Total                       |                        |        0|   0|  0|  273|    0|
+    +----------------------------+------------------------+---------+----+---+-----+-----+
+
+    * DSP: 
+    +-----------------------------------+-------------------------------+--------------+
+    |              Instance             |             Module            |  Expression  |
+    +-----------------------------------+-------------------------------+--------------+
+    |mac_muladd_16s_16s_38s_38_4_1_U68  |mac_muladd_16s_16s_38s_38_4_1  |  i0 * i1 + i2|
+    |mac_muladd_16s_16s_38s_38_4_1_U69  |mac_muladd_16s_16s_38s_38_4_1  |  i0 * i1 + i2|
+    +-----------------------------------+-------------------------------+--------------+
+
+    * Memory: 
+    N/A
+
+    * FIFO: 
+    N/A
+
+    * Expression: 
+    +---------------------+----------+----+---+----+------------+------------+
+    |    Variable Name    | Operation| DSP| FF| LUT| Bitwidth P0| Bitwidth P1|
+    +---------------------+----------+----+---+----+------------+------------+
+    |add_ln23_fu_778_p2   |         +|   0|  0|  14|           7|           1|
+    |add_ln39_fu_788_p2   |         +|   0|  0|  12|          12|          12|
+    |icmp_ln23_fu_772_p2  |      icmp|   0|  0|  15|           7|           8|
+    |ap_enable_pp0        |       xor|   0|  0|   2|           1|           2|
+    +---------------------+----------+----+---+----+------------+------------+
+    |Total                |          |   0|  0|  43|          27|          23|
+    +---------------------+----------+----+---+----+------------+------------+
+
+    * Multiplexer: 
+    +---------------------------+----+-----------+-----+-----------+
+    |            Name           | LUT| Input Size| Bits| Total Bits|
+    +---------------------------+----+-----------+-----+-----------+
+    |ap_done_int                |   9|          2|    1|          2|
+    |ap_enable_reg_pp0_iter1    |   9|          2|    1|          2|
+    |ap_sig_allocacmp_ib_1      |   9|          2|    7|         14|
+    |ap_sig_allocacmp_p_load    |   9|          2|   38|         76|
+    |ap_sig_allocacmp_p_load71  |   9|          2|   38|         76|
+    |empty_108_fu_316           |   9|          2|   38|         76|
+    |empty_fu_312               |   9|          2|   38|         76|
+    |ib_fu_320                  |   9|          2|    7|         14|
+    +---------------------------+----+-----------+-----+-----------+
+    |Total                      |  72|         16|  168|        336|
+    +---------------------------+----+-----------+-----+-----------+
+
+    * Register: 
+    +----------------------------------+----+----+-----+-----------+
+    |               Name               | FF | LUT| Bits| Const Bits|
+    +----------------------------------+----+----+-----+-----------+
+    |ap_CS_fsm                         |   1|   0|    1|          0|
+    |ap_done_reg                       |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter1           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter2           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter3           |   1|   0|    1|          0|
+    |ap_enable_reg_pp0_iter4           |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter1_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter2_reg  |   1|   0|    1|          0|
+    |ap_loop_exit_ready_pp0_iter3_reg  |   1|   0|    1|          0|
+    |empty_108_fu_316                  |  38|   0|   38|          0|
+    |empty_fu_312                      |  38|   0|   38|          0|
+    |ib_fu_320                         |   7|   0|    7|          0|
+    |icmp_ln23_reg_1147                |   1|   0|    1|          0|
+    |tmp_s_reg_1161                    |  16|   0|   16|          0|
+    |icmp_ln23_reg_1147                |  64|  32|    1|          0|
+    +----------------------------------+----+----+-----+-----------+
+    |Total                             | 173|  32|  110|          0|
+    +----------------------------------+----+----+-----+-----------+
+
+
+
+================================================================
+== Interface
+================================================================
+* Summary: 
++-----------------------------------------------------------------------------+-----+-----+------------+--------------------------------------------------------------------+--------------+
+|                                  RTL Ports                                  | Dir | Bits|  Protocol  |                            Source Object                           |    C Type    |
++-----------------------------------------------------------------------------+-----+-----+------------+--------------------------------------------------------------------+--------------+
+|ap_clk                                                                       |   in|    1|  ap_ctrl_hs|                           dense<64, 128, true>_Pipeline_INPUT_GROUP|  return value|
+|ap_rst                                                                       |   in|    1|  ap_ctrl_hs|                           dense<64, 128, true>_Pipeline_INPUT_GROUP|  return value|
+|ap_start                                                                     |   in|    1|  ap_ctrl_hs|                           dense<64, 128, true>_Pipeline_INPUT_GROUP|  return value|
+|ap_done                                                                      |  out|    1|  ap_ctrl_hs|                           dense<64, 128, true>_Pipeline_INPUT_GROUP|  return value|
+|ap_idle                                                                      |  out|    1|  ap_ctrl_hs|                           dense<64, 128, true>_Pipeline_INPUT_GROUP|  return value|
+|ap_ready                                                                     |  out|    1|  ap_ctrl_hs|                           dense<64, 128, true>_Pipeline_INPUT_GROUP|  return value|
+|zext_ln39                                                                    |   in|   12|     ap_none|                                                           zext_ln39|        scalar|
+|input_0_val                                                                  |   in|   16|     ap_none|                                                         input_0_val|        scalar|
+|input_1_val                                                                  |   in|   16|     ap_none|                                                         input_1_val|        scalar|
+|input_2_val                                                                  |   in|   16|     ap_none|                                                         input_2_val|        scalar|
+|input_3_val                                                                  |   in|   16|     ap_none|                                                         input_3_val|        scalar|
+|input_4_val                                                                  |   in|   16|     ap_none|                                                         input_4_val|        scalar|
+|input_5_val                                                                  |   in|   16|     ap_none|                                                         input_5_val|        scalar|
+|input_6_val                                                                  |   in|   16|     ap_none|                                                         input_6_val|        scalar|
+|input_7_val                                                                  |   in|   16|     ap_none|                                                         input_7_val|        scalar|
+|input_8_val                                                                  |   in|   16|     ap_none|                                                         input_8_val|        scalar|
+|input_9_val                                                                  |   in|   16|     ap_none|                                                         input_9_val|        scalar|
+|input_10_val                                                                 |   in|   16|     ap_none|                                                        input_10_val|        scalar|
+|input_11_val                                                                 |   in|   16|     ap_none|                                                        input_11_val|        scalar|
+|input_12_val                                                                 |   in|   16|     ap_none|                                                        input_12_val|        scalar|
+|input_13_val                                                                 |   in|   16|     ap_none|                                                        input_13_val|        scalar|
+|input_14_val                                                                 |   in|   16|     ap_none|                                                        input_14_val|        scalar|
+|input_15_val                                                                 |   in|   16|     ap_none|                                                        input_15_val|        scalar|
+|input_16_val                                                                 |   in|   16|     ap_none|                                                        input_16_val|        scalar|
+|input_17_val                                                                 |   in|   16|     ap_none|                                                        input_17_val|        scalar|
+|input_18_val                                                                 |   in|   16|     ap_none|                                                        input_18_val|        scalar|
+|input_19_val                                                                 |   in|   16|     ap_none|                                                        input_19_val|        scalar|
+|input_20_val                                                                 |   in|   16|     ap_none|                                                        input_20_val|        scalar|
+|input_21_val                                                                 |   in|   16|     ap_none|                                                        input_21_val|        scalar|
+|input_22_val                                                                 |   in|   16|     ap_none|                                                        input_22_val|        scalar|
+|input_23_val                                                                 |   in|   16|     ap_none|                                                        input_23_val|        scalar|
+|input_24_val                                                                 |   in|   16|     ap_none|                                                        input_24_val|        scalar|
+|input_25_val                                                                 |   in|   16|     ap_none|                                                        input_25_val|        scalar|
+|input_26_val                                                                 |   in|   16|     ap_none|                                                        input_26_val|        scalar|
+|input_27_val                                                                 |   in|   16|     ap_none|                                                        input_27_val|        scalar|
+|input_28_val                                                                 |   in|   16|     ap_none|                                                        input_28_val|        scalar|
+|input_29_val                                                                 |   in|   16|     ap_none|                                                        input_29_val|        scalar|
+|input_30_val                                                                 |   in|   16|     ap_none|                                                        input_30_val|        scalar|
+|input_31_val                                                                 |   in|   16|     ap_none|                                                        input_31_val|        scalar|
+|input_32_val                                                                 |   in|   16|     ap_none|                                                        input_32_val|        scalar|
+|input_33_val                                                                 |   in|   16|     ap_none|                                                        input_33_val|        scalar|
+|input_34_val                                                                 |   in|   16|     ap_none|                                                        input_34_val|        scalar|
+|input_35_val                                                                 |   in|   16|     ap_none|                                                        input_35_val|        scalar|
+|input_36_val                                                                 |   in|   16|     ap_none|                                                        input_36_val|        scalar|
+|input_37_val                                                                 |   in|   16|     ap_none|                                                        input_37_val|        scalar|
+|input_38_val                                                                 |   in|   16|     ap_none|                                                        input_38_val|        scalar|
+|input_39_val                                                                 |   in|   16|     ap_none|                                                        input_39_val|        scalar|
+|input_40_val                                                                 |   in|   16|     ap_none|                                                        input_40_val|        scalar|
+|input_41_val                                                                 |   in|   16|     ap_none|                                                        input_41_val|        scalar|
+|input_42_val                                                                 |   in|   16|     ap_none|                                                        input_42_val|        scalar|
+|input_43_val                                                                 |   in|   16|     ap_none|                                                        input_43_val|        scalar|
+|input_44_val                                                                 |   in|   16|     ap_none|                                                        input_44_val|        scalar|
+|input_45_val                                                                 |   in|   16|     ap_none|                                                        input_45_val|        scalar|
+|input_46_val                                                                 |   in|   16|     ap_none|                                                        input_46_val|        scalar|
+|input_47_val                                                                 |   in|   16|     ap_none|                                                        input_47_val|        scalar|
+|input_48_val                                                                 |   in|   16|     ap_none|                                                        input_48_val|        scalar|
+|input_49_val                                                                 |   in|   16|     ap_none|                                                        input_49_val|        scalar|
+|input_50_val                                                                 |   in|   16|     ap_none|                                                        input_50_val|        scalar|
+|input_51_val                                                                 |   in|   16|     ap_none|                                                        input_51_val|        scalar|
+|input_52_val                                                                 |   in|   16|     ap_none|                                                        input_52_val|        scalar|
+|input_53_val                                                                 |   in|   16|     ap_none|                                                        input_53_val|        scalar|
+|input_54_val                                                                 |   in|   16|     ap_none|                                                        input_54_val|        scalar|
+|input_55_val                                                                 |   in|   16|     ap_none|                                                        input_55_val|        scalar|
+|input_56_val                                                                 |   in|   16|     ap_none|                                                        input_56_val|        scalar|
+|input_57_val                                                                 |   in|   16|     ap_none|                                                        input_57_val|        scalar|
+|input_58_val                                                                 |   in|   16|     ap_none|                                                        input_58_val|        scalar|
+|input_59_val                                                                 |   in|   16|     ap_none|                                                        input_59_val|        scalar|
+|input_60_val                                                                 |   in|   16|     ap_none|                                                        input_60_val|        scalar|
+|input_61_val                                                                 |   in|   16|     ap_none|                                                        input_61_val|        scalar|
+|input_62_val                                                                 |   in|   16|     ap_none|                                                        input_62_val|        scalar|
+|input_63_val                                                                 |   in|   16|     ap_none|                                                        input_63_val|        scalar|
+|p_out                                                                        |  out|   38|      ap_vld|                                                               p_out|       pointer|
+|p_out_ap_vld                                                                 |  out|    1|      ap_vld|                                                               p_out|       pointer|
+|p_out1                                                                       |  out|   38|      ap_vld|                                                              p_out1|       pointer|
+|p_out1_ap_vld                                                                |  out|    1|      ap_vld|                                                              p_out1|       pointer|
+|ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_address0    |  out|   12|   ap_memory|    ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1|         array|
+|ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_ce0         |  out|    1|   ap_memory|    ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1|         array|
+|ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_q0          |   in|   16|   ap_memory|    ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1|         array|
+|ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1_address0  |  out|   12|   ap_memory|  ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1|         array|
+|ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1_ce0       |  out|    1|   ap_memory|  ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1|         array|
+|ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1_q0        |   in|   16|   ap_memory|  ffn_ap_uint_64_const_ap_uint_64_const_ap_uint_64_unsigned_int_w1_1|         array|
++-----------------------------------------------------------------------------+-----+-----+------------+--------------------------------------------------------------------+--------------+
+
