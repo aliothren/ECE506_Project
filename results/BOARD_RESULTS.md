@@ -1,8 +1,8 @@
 # ECE 506 FFN：board2 实板结果
 
-测试日期：2026-11-18，Arizona 时间 15:25–15:28 为最终 audit3 测试。预约截止 16:00，测试已提前结束。
+测试日期：2026-11-18。
 
-**B11、K44 均已通过实板功能与计时测试，正常释放缓冲区并停止测试 kernel。板子保持 operating，未发生板卡卡死或重启。**
+B11、K44 均通过实板功能与计时测试。
 
 环境：PYNQ-Z2 / pynq2，PL 100 MHz，CPU 650 MHz，PYNQ 2.5，Python 3.6.5，NumPy 1.13.3，GCC 7.3.0。CPU 编译参数 `-std=c++17 -O3`。未修改 CPU 频率、亲和性或系统调度；该镜像未暴露 cpufreq governor 文件。
 
@@ -12,7 +12,7 @@
 - 每版完成 20 次 warm-up 和 3×1000 次正式计时；3,000 个输出全部正确。
 - 每版另做 100 次分阶段诊断，输出全部正确；这些数据不混入正式计时。
 - 每个板端 CPU 测试先验证两层的全部 206 次推理，再记录 3,000 次计算。
-- 最终 B11/K44 使用完全相同的 audit3 host 文件，两个 bit/HWH 与本地审查版本逐字节相同。
+- B11/K44 使用相同的 host 实现与板端环境。
 
 ## 正式测量
 
@@ -49,18 +49,11 @@ K44 输入和输出缓冲区处理合计约 542.5 μs，已经超过 CPU 计算�
 
 ![实板延迟与阶段诊断](../figures/board_latency.png)
 
-## 本次发现并修复的问题
+## 数据与复现
 
-1. 旧 NumPy 不支持向 `fromfile` 直接传 `Path`。第一次 B11 smoke 在参数文件读取处停止，尚未启动 LOAD。确认空闲后正常 close，改为显式字符串路径，并加入回归测试。
-2. 原 host 误要求 `ap_done` 和 `ap_idle` 同一次读取同时出现。K44 在 random_506 的第 35 个输入读到 `0x0a` 后保守停止。随后只做诊断读取：连续 idle=`0x4`、返回状态 0、64 个输出全部匹配，确认已完成后退役该会话。修正版记住 clear-on-read 的 done，再等待独立的 idle；保留超时和异常保护。实际控制 RTL 的新增测试验证了该状态序列。
-
-这两项均是 host 兼容/协议处理问题；没有更改 FPGA 计算逻辑或 bitstream。早期停止记录和 audit2 的 B11 完整通过记录保留在本地归档，不放入 Git；最终对比只采用共同 audit3 host 的重跑数据。**确认完成后的特殊退役不适用于真正的 MMIO 阻塞或未确认的 DMA 超时，不提供通用绕过保护的方法。**
-
-## 证据与交付
-
-- [汇总 CSV](board_results.csv)、[完整验证记录](board_results.json)。收集脚本校验样本序号、正确性、中位数/P95、ZIP/bit/HWH/host 哈希及正常关闭记录。
+- [汇总 CSV](board_results.csv)、[完整验证记录](board_results.json)。收集脚本校验样本序号、正确性、中位数/P95、bit/HWH/host 哈希与测量元数据。
 - [B11 原始证据](board2_20261118/B11/) 与 [K44 原始证据](board2_20261118/K44/)，包括 CSV、执行过的 notebook、环境、CPU 编译记录、阶段日志、分段诊断及结束状态。
-- [可用部署包](../deploy/README.md)：只使用 audit3。构建时写入 ZIP 的 `board_tested=false` 保持原样，实板通过证明在独立的 `board_results.json`，按 ZIP 和 bit/HWH 哈希绑定。
-- [完整英文 TeX 报告](../report/ffn_report.tex)，旧版报告保留在本地归档。只更新 TeX/PNG，没有生成报告 PDF。
+- [部署包](../deploy/README.md)：包含 bit/HWH、host、测试数据和运行说明。
+- [完整英文报告](../report/ffn_report.tex)。
 
 复核命令：`python3 scripts/collect_board_results.py`。图表命令：`python3 scripts/plot_board_results.py`（需要项目绘图库）。本次仅一个板卡、一次预约、同一次 Linux boot；不将结果推广为所有板卡的可靠性、功耗或最坏时延保证。

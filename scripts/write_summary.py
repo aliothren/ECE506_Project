@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Write an evidence-based local progress report from collected results."""
+"""Summarize HLS and implementation results."""
 import csv
 from datetime import datetime
 from pathlib import Path
@@ -48,19 +48,19 @@ def main():
         text+=['',selection]
     text+=['','**RTL 测量**','',
            '以下为仿真 AXI 内存模型下，顶层 RUN 的实际周期；包含该模型中的输入输出，不能当作实板端到端时间。LOAD 单列。HLS 的静态延迟估计与 RTL 测量可能不同，保留两者原始口径。','',
+           'HLS 使用 `ffn_compute` 的静态 latency 字段，RTL 使用顶层开始与完成时间戳之差。B11/K44 的 RTL 周期分别少 312/24；测量边界本身不能解释这一顺序，差异来源尚未分解。','',
            '| 配置 | RUN 周期范围 | LOAD 周期范围 |','|---|---:|---:|']
     for r in verified:
         text.append(f'| {r["config_id"]} | {r.get("rtl_inference_min_cycles", "")}-{r.get("rtl_inference_max_cycles", "")} | {r.get("rtl_load_min_cycles", "")}-{r.get("rtl_load_max_cycles", "")} |')
-    text+=['','**本地实现与剩余工作**','']
+    text+=['','**本地实现与验证**','']
     for r in rows:
         if r['implementation_status']=='pass':
             text.append(f'- {r["config_id"]}：已生成 bit/hwh，setup WNS={r["setup_wns_ns"]} ns，hold slack={r["hold_whs_ns"]} ns，目标 100 MHz。')
             if r.get('impl_LUT'):
                 text.append(f'  完整实现资源：LUT={r["impl_LUT"]}，FF={r["impl_FF"]}，DSP={r["impl_DSP"]}，BRAM36 tile={r["impl_BRAM_tiles"]}（折合 BRAM_18K={r["impl_BRAM_18K_equiv"]}）。这是布局布线结果，与上表 HLS 估计分开报告。')
     text+=['- 实板进展和 CPU 对照见 [BOARD_RESULTS.md](BOARD_RESULTS.md)；本地 CPU smoke test 不用于板端加速比较。',
-           '- 初次 B11/B44 XSIM 在受限环境启动失败；重试只重跑 RTL/IP 导出，失败日志和通过记录都保留。',
            '- 数据可重复生成；寄存器从实际 HWH 解析。复位、时钟、AXI 连接检查和 host 超时/中断生命周期测试已完成。',
-           '- 完整复现方法见 [README](../README.md)，原始配置状态见 [CSV](hls_results.csv)，每次构建记录见 CSV 的 run 路径。','',
+           '- 完整复现方法见 [README](../README.md)，原始配置状态见 [CSV](hls_results.csv)，选出的原始报告见 `hls_reports/`。','',
            '**图表**','',
            '[并行度与延迟](../figures/banked_latency.png) · [延迟与资源](../figures/latency_resources.png)']
     if (ROOT/'figures/memory_comparison.png').exists(): text[-1]+=' · [存储组织对照](../figures/memory_comparison.png)'

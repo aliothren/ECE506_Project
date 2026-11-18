@@ -12,11 +12,7 @@ __pycache__/
 /results/ffn_cpu*
 /results/environment.json
 /results/local_cpu_smoke*
-/results/board_readiness_pre_board.json
-/results/local_validation_pre_audit.json
-/results/local_validation.json
 /results/interface_validation.json
-/report/ffn_report_local_20261118.tex
 /report/*.aux
 /report/*.log
 /report/*.out
@@ -24,13 +20,13 @@ __pycache__/
 /report/*.pdf
 /figures/*.pdf
 
-# Keep final immutable releases plus their small manifest records; omit copies.
+# Deployment packages and manifest records.
 /deploy/*
 !/deploy/README.md
-!/deploy/*_audit3.zip
-!/deploy/*_audit3/
-/deploy/*_audit3/*
-!/deploy/*_audit3/manifest.json
+!/deploy/*_release1.zip
+!/deploy/*_release1/
+/deploy/*_release1/*
+!/deploy/*_release1/manifest.json
 
 # Retain final board evidence, including logs needed for hash verification.
 /results/board2_20261118/*
@@ -39,8 +35,4 @@ __pycache__/
 !/results/board2_20261118/B11/*.log
 !/results/board2_20261118/K44/*.log
 
-# Original reservation-specific runner stays local; use run_board.py instead.
-/scripts/run_board2.py
-/repository_review.json
-/EXPERIMENT_PLAN.md
 /results/board_runs/

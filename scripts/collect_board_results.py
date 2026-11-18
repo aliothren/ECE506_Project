@@ -5,6 +5,7 @@ import hashlib
 import json
 from pathlib import Path
 import statistics
+import zipfile
 
 ROOT=Path(__file__).resolve().parents[1]
 BASE=ROOT/'results/board2_20261118'
@@ -44,14 +45,25 @@ def main():
             raise ValueError('Unexpected board/final state')
         if boot is not None and boot!=env['boot_id']:raise ValueError('Different board boots')
         boot=env['boot_id']
-        release=cid+'_'+manifest['run']+'_'+manifest['package_revision']
+        release=cid+'_'+manifest['run']+'_release1'
         archive=ROOT/'deploy'/(release+'.zip')
-        if hashlib.sha256(archive.read_bytes()).hexdigest()!=state['zip_sha256']:
-            raise ValueError('Archive differs from uploaded bytes')
-        if manifest['package_revision']!='audit3' or manifest['config']['config_id']!=cid:
-            raise ValueError('Unexpected release')
+        if manifest['config']['config_id']!=cid:
+            raise ValueError('Unexpected measured configuration')
         local_manifest=json.loads((ROOT/'deploy'/release/'manifest.json').read_text())
-        if manifest!=local_manifest:raise ValueError('Remote manifest differs')
+        if local_manifest['config']!=manifest['config'] or local_manifest['run']!=manifest['run']:
+            raise ValueError('Release configuration differs from measured configuration')
+        with zipfile.ZipFile(archive) as package:
+            if json.loads(package.read(release+'/manifest.json'))!=local_manifest:
+                raise ValueError('Archive manifest differs')
+            for name,digest in manifest['sha256'].items():
+                if name in ('ffn.bit','ffn.hwh') or name.endswith('.py') or name.startswith(('data/','reference/')):
+                    if local_manifest['sha256'].get(name)!=digest or hashlib.sha256(package.read(release+'/'+name)).hexdigest()!=digest:
+                        raise ValueError('Release runtime differs from measured artifact: '+name)
+            measured_notebook=read('ffn_board_executed.ipynb')
+            released_notebook=json.loads(package.read(release+'/ffn_board.ipynb'))
+            code=lambda nb:[''.join(c['source']) for c in nb['cells'] if c['cell_type']=='code']
+            if code(measured_notebook)!=code(released_notebook):
+                raise ValueError('Notebook code differs from measured experiment')
         if board['metadata']['bit_sha256']!=manifest['sha256']['ffn.bit'] or board['metadata']['pl_clock_mhz']!=100:
             raise ValueError('Bitstream/clock mismatch')
         data=board['metadata']['data_manifest']
@@ -77,8 +89,12 @@ def main():
         for kind,stats in [('FPGA_host',fstats),('CPU_compute',cstats)]:
             table.append({'config_id':cid,'path':kind,'calls':stats['calls'],'median_us':stats['median_us'],
                           'p95_us':stats['p95_us'],'min_us':stats['min_us'],'max_us':stats['max_us']})
-        configs[cid]={'status':'pass','run':manifest['run'],'package_revision':manifest['package_revision'],
-                      'zip_sha256':state['zip_sha256'],'bit_sha256':manifest['sha256']['ffn.bit'],
+        configs[cid]={'status':'pass','run':manifest['run'],'package_revision':local_manifest['package_revision'],
+                      'measured_zip_sha256':state['zip_sha256'],
+                      'release_archive':str(archive.relative_to(ROOT)),
+                      'release_zip_sha256':hashlib.sha256(archive.read_bytes()).hexdigest(),
+                      'runtime_and_notebook_code_match_measurement':True,
+                      'bit_sha256':manifest['sha256']['ffn.bit'],
                       'hwh_sha256':manifest['sha256']['ffn.hwh'],'host_sha256':manifest['sha256']['ffn_host.py'],
                       'correctness_inferences':206,'fpga_host':fstats,'cpu_compute':cstats,
                       'profile':profile,'load_us':board['load_ns']/1000,

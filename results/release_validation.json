@@ -2,11 +2,11 @@
   "status": "pass",
   "archives": [
     {
-      "file": "deploy/B11_20261118T204214272606Z_audit3.zip",
+      "file": "deploy/B11_20261118T204214272606Z_release1.zip",
       "config": "B11",
-      "revision": "audit3",
-      "sha256": "e437e4cc2e03cd56040e0e0ac480f47986a7fd452f58a5f9da8c0116621b069e",
-      "hashed_files": 62,
+      "revision": "release1",
+      "sha256": "d1e2202371d6315c6cf08de43c59fa6909e5f1dc00f298e5c21c97e9cb47c221",
+      "hashed_files": 53,
       "notebook_code_cells": 10,
       "rejected_package_faults": [
         "truncated_or_corrupt_bit",
@@ -21,11 +21,11 @@
       "board_tested": false
     },
     {
-      "file": "deploy/K44_20261118T205854106482Z_audit3.zip",
+      "file": "deploy/K44_20261118T205854106482Z_release1.zip",
       "config": "K44",
-      "revision": "audit3",
-      "sha256": "d0786123df1463947d24036fb17cc36f1d6e38460a0d122772b681a426393a72",
-      "hashed_files": 62,
+      "revision": "release1",
+      "sha256": "89971668b74ec4b6b6a59fabad219bd918ce89604f39674e1cabb11bfec9469a",
+      "hashed_files": 53,
       "notebook_code_cells": 10,
       "rejected_package_faults": [
         "truncated_or_corrupt_bit",

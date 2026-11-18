@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Collect measured HLS reports. Keep history; never fabricate missing fields."""
+"""Collect HLS, RTL and implementation metrics from completed runs."""
 import csv
 import hashlib
 import json
@@ -120,7 +120,6 @@ def main():
         raise SystemExit('No local HLS runs found; published result tables were left unchanged. '
                          'Use check_evidence.py to validate the published snapshot, or run HLS first.')
     out=ROOT/'results'; out.mkdir(exist_ok=True)
-    writecsv(out/'hls_history.csv',rows)
     latest={}
     for r in rows: latest[r['config_id']]=r
     rows=list(latest.values())

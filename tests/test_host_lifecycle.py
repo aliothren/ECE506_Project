@@ -153,7 +153,7 @@ class HostLifecycle(unittest.TestCase):
     def test_constructor_has_no_pynq_dependency_or_programming(self):
         with tempfile.TemporaryDirectory() as tmp:
             package=Path(tmp); (package/'data').mkdir(); (package/'data/manifest.json').write_text('{}')
-            manifest={'config':{},'run':'test','source_hash':'hash','sha256':{'ffn.bit':'bit'},'package_revision':'audit1'}
+            manifest={'config':{},'run':'test','source_hash':'hash','sha256':{'ffn.bit':'bit'},'package_revision':'test'}
             with patch('ffn_host.preflight',return_value=(manifest,{})):
                 s=FFNSession(package)
                 self.assertEqual(s.stage,'preflight')

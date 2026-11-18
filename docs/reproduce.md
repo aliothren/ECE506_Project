@@ -26,12 +26,13 @@ make verify
 3. Verify exported report hashes, reparse HLS/RTL/implementation values, compare
    them with the published CSV, and check the measured hardware source.
 4. Recompute board statistics from raw samples, verify correctness/cleanup and
-   the common host revision, and bind measurements to the uploaded ZIP hashes.
+   the common host implementation, and compare release runtime files with the
+   measured artifact hashes.
 5. Extract both ZIPs into temporary directories, validate all hashes, check
    notebook syntax, run file-only host preflight, and reject eight types of
    injected package corruption per archive.
 6. Check TeX environments/braces, labels, citations, figures, numerical tables
-   and unchanged board runtime source hashes. No TeX engine runs.
+   and board runtime source hashes.
 
 Collectors rewrite derived JSON/CSV validation summaries. Original board CSVs,
 logs and archives are preserved. The C++ check creates an ignored local binary.
@@ -39,8 +40,7 @@ logs and archives are preserved. The C++ check creates an ignored local binary.
 ## Report and figures
 
 The final report is `report/ffn_report.tex`, with an inline TikZ architecture
-diagram and PNG figures. It needs standard LaTeX packages, including TikZ.
-This delivery intentionally has no report PDF and has not been typeset.
+diagram and PNG figures. It uses standard LaTeX packages, including TikZ and xurl.
 To regenerate only PNG figures from the published data:
 
 ```bash
@@ -69,10 +69,8 @@ Each run creates `runs/CONFIG/TIMESTAMP/` with frozen source, configuration,
 hashes, logs and reports. Each C simulation checks 206 inferences. Each RTL
 suite performs two error-state checks and four LOAD/RUN/RUN groups: 14 calls.
 
-If the execution environment prevents XSIM startup,
-`python scripts/verify_run.py PATH_TO_RUN` retries RTL/IP export in an environment
-where the simulator is allowed. It preserves the original attempt without
-repeating synthesis or substituting new hardware source.
+RTL verification and IP export can also be invoked separately with
+`python scripts/verify_run.py PATH_TO_RUN` after synthesis.
 
 ## Rebuild deployment packages
 
@@ -83,7 +81,7 @@ python scripts/build_board.py PATH_TO_VERIFIED_RUN
 python scripts/verify_control.py PATH_TO_VERIFIED_RUN
 python -O scripts/check_interface.py PATH_TO_VERIFIED_RUN/overlay/ffn.hwh
 python scripts/verify_done_idle.py PATH_TO_VERIFIED_RUN
-python scripts/package_board.py PATH_TO_VERIFIED_RUN --revision audit3
+python scripts/package_board.py PATH_TO_VERIFIED_RUN --revision release1
 ```
 
 Implementation checks setup/hold timing before releasing a matched bit/HWH pair.

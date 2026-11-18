@@ -18,7 +18,7 @@ from preflight import preflight
 def main():
     p=argparse.ArgumentParser()
     p.add_argument('run',type=Path)
-    p.add_argument('--revision',default='audit3')
+    p.add_argument('--revision',default='release1')
     args=p.parse_args()
     run=args.run.resolve()
     meta=json.loads((run/'run.json').read_text())
@@ -42,13 +42,11 @@ def main():
                  'run_cpu.py','ffn_board.ipynb','README.md'):
         shutil.copy2(ROOT/'board'/name,dest/name)
     (dest/'audit').mkdir()
-    for pattern in ('control_verification.json','simulation_*.log','tb_*.v','axi_tasks.vh'):
+    for pattern in ('control_verification.json',):
         for f in (run/'control_verification').glob(pattern):
             shutil.copy2(f,dest/'audit'/f.name)
     shutil.copy2(ROOT/('results/interface_validation_'+cid+'.json'),dest/'audit/interface_validation.json')
     shutil.copy2(run/'done_idle_verification/done_idle_verification.json',dest/'audit/done_idle_verification.json')
-    shutil.copy2(run/'done_idle_verification/simulation.log',dest/'audit/simulation_done_idle.log')
-    shutil.copy2(run/'done_idle_verification/tb_done_idle.v',dest/'audit/tb_done_idle.v')
     shutil.copytree(ROOT/'data',dest/'data')
     (dest/'reference').mkdir()
     for name in ('ffn_cpu.cpp','fixtures.h'):

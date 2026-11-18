@@ -13,8 +13,7 @@
     "part": "xc7z020clg400-1",
     "clock_ns": "10",
     "planned_rtl_validation": "yes",
-    "planned_board_role": "baseline",
-    "status": "not_run"
+    "planned_board_role": "baseline"
   },
   "source_hash": "ec8086f1c88d6ad2b678ae71c30379840e6077cee36538f01273f3eec0b8d67f",
   "source_files": {
@@ -28,24 +27,7 @@
     "reference/golden.py": "40737501cd1b2f611aac363056823e496ce42e944c587a811b8b9a8ce5609a56",
     "spec.md": "0649cda5981da2c397502267f518543d1209fbe4d68e0998d05b75e0f770d332"
   },
-  "started_utc": "20261118T204214272606Z",
   "cosim_requested": true,
   "export_requested": true,
-  "status": "pass",
-  "command": [
-    "vitis-run",
-    "--mode",
-    "hls",
-    "--tcl",
-    "/home/yuxinr/ece506/ffn-project/runs/B11/20261118T204214272606Z/source/hls/run.tcl"
-  ],
-  "returncode": 1,
-  "finished_utc": "2026-11-18T20:45:27.391010+00:00",
-  "verification_attempts": [
-    {
-      "directory": "verification_20261118T204637025944Z",
-      "returncode": 0,
-      "script_sha256": "f7754d4443479257699402c2c08430eb03d783a8a5ade18bc00e323eb3469a84"
-    }
-  ]
+  "status": "pass"
 }

@@ -40,6 +40,8 @@
 
 以下为仿真 AXI 内存模型下，顶层 RUN 的实际周期；包含该模型中的输入输出，不能当作实板端到端时间。LOAD 单列。HLS 的静态延迟估计与 RTL 测量可能不同，保留两者原始口径。
 
+HLS 数据来自 `ffn_compute` 的 `Worst-caseLatency` 字段，其 best/average 字段数值相同；RTL 数据来自顶层调用开始与完成时间戳之差。B11 和 K44 的 RTL 周期分别比静态计算估计少 312 和 24。测量边界不同本身不能解释这一顺序，现有数据尚未分解差异来源，因此分别比较两组指标。
+
 | 配置 | RUN 周期范围 | LOAD 周期范围 |
 |---|---:|---:|
 | B11 | 17869-17869 | 29152-29152 |
@@ -54,9 +56,8 @@
 - K44：已生成 bit/hwh，setup WNS=0.350 ns，hold slack=0.016 ns，目标 100 MHz。
   完整实现资源：LUT=10264.0，FF=18169.0，DSP=32.0，BRAM36 tile=9.0（折合 BRAM_18K=18.0）。这是布局布线结果，与上表 HLS 估计分开报告。
 - 实板进展和 CPU 对照见 [BOARD_RESULTS.md](BOARD_RESULTS.md)；本地 CPU smoke test 不用于板端加速比较。
-- 初次 B11/B44 XSIM 在受限环境启动失败；重试只重跑 RTL/IP 导出，失败日志和通过记录都保留。
 - 数据可重复生成；寄存器从实际 HWH 解析。复位、时钟、AXI 连接检查和 host 超时/中断生命周期测试已完成。
-- 完整复现方法见 [README](../README.md)，原始配置状态见 [CSV](hls_results.csv)，选出的原始报告见 `hls_reports/`；CSV 的 run 路径标识本地保留的完整构建归档。
+- 完整复现方法见 [README](../README.md)，原始配置状态见 [CSV](hls_results.csv)，选出的原始报告见 `hls_reports/`。
 
 **图表**
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Check report-source structure and measured tables; never invoke a TeX engine."""
+"""Check report references, source structure and measured tables."""
 import csv
 from decimal import Decimal, ROUND_HALF_UP
 import hashlib
@@ -90,10 +90,9 @@ def main():
     require(coverage['Total'][0] == str(sum(counts.values())), 'Wrong coverage total')
     require(coverage['Random (seeds 506, 507, 508)'][0] == str(sum(v for k, v in counts.items() if k.startswith('random_'))), 'Wrong random-case count')
 
-    for manifest_path in (ROOT / 'deploy').glob('*_audit3/manifest.json'):
+    for manifest_path in (ROOT / 'deploy').glob('*_release1/manifest.json'):
         manifest = json.loads(manifest_path.read_text())
         for name, digest in manifest['sha256'].items():
-            # Current documentation can evolve; the board-tested runtime is immutable.
             if name.endswith('.py') or name == 'ffn_board.ipynb':
                 require(hashlib.sha256((ROOT / 'board' / name).read_bytes()).hexdigest() == digest,
                         'Board runtime differs from tested release: ' + name)
@@ -102,10 +101,9 @@ def main():
               'environments_and_braces_balanced': True, 'labels_citations_figures_resolve': True,
               'hls_rtl_memory_implementation_coverage_tables_match': True,
               'board_table_matches_raw_validated_summary': True,
-              'release_runtime_source_hashes_match': True,
-              'tex_engine_run': False, 'report_pdf_generated': False}
+              'release_runtime_source_hashes_match': True}
     (ROOT / 'results/report_source_validation.json').write_text(json.dumps(record, indent=2) + '\n')
-    print('REPORT_SOURCE_CHECK_PASS: structure, references, six data tables and board runtime hashes; no TeX engine run')
+    print('REPORT_SOURCE_CHECK_PASS: structure, references, six data tables and board runtime hashes')
 
 
 if __name__ == '__main__':

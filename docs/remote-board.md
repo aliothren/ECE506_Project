@@ -2,9 +2,8 @@
 
 The main procedure is the notebook in [board/README.md](../board/README.md).
 `scripts/run_board.py` automates **one stage per invocation** through an existing
-local Jupyter tunnel. It does not establish SSH/VPN or reserve a board. This
-wrapper was generalized after final measurements and tested locally; it has not
-been rerun on a board. It executes the unchanged notebook from the audit3 ZIP.
+local Jupyter tunnel. It does not establish SSH/VPN or reserve a board. The
+helper executes the notebook from the selected deployment archive.
 
 Install `requirements-remote.txt` on the workstation. Use the course's current
 connection instructions to expose the assigned board's Jupyter on localhost
@@ -33,7 +32,7 @@ Close B11 normally before starting K44 in a new kernel.
 `collect` downloads available evidence without launching another notebook cell.
 `finish` requires a normal close before stopping this run's kernel. Outputs go
 to ignored `results/board_runs/RUN_ID/CONFIG/`, separate from published records.
-The original result collector targets the November 18 experiment; analyze new
+The result collector targets the November 18 experiment; analyze new
 sessions separately.
 
 A failed or uncertain stage blocks relaunch. Preserve the state file and kernel

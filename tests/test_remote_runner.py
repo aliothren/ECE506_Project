@@ -39,7 +39,7 @@ class RemoteRunnerGuards(unittest.TestCase):
                 run_board.Run('B11', 2, self.future, run_id)
         self.network.assert_not_called()
 
-    def test_old_state_cannot_be_reused_on_another_board(self):
+    def test_state_is_bound_to_one_board(self):
         out = run_board.ROOT / 'results/board_runs/existing/B11'
         out.mkdir(parents=True)
         (out / 'remote_run.json').write_text(json.dumps({

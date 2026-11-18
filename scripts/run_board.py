@@ -18,7 +18,7 @@ import requests
 import websocket
 
 ROOT=Path(__file__).resolve().parents[1]
-RELEASES={'B11':'B11_20261118T204214272606Z_audit3','K44':'K44_20261118T205854106482Z_audit3'}
+RELEASES={'B11':'B11_20261118T204214272606Z_release1','K44':'K44_20261118T205854106482Z_release1'}
 STAGES=['preflight','program','control','buffers','smoke','validate','benchmark','close','cpu','files']
 TIMEOUTS=[30,45,20,20,20,60,180,20,180,20]
 

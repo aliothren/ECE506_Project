@@ -53,9 +53,10 @@ def main():
         for ax,key,title in zip(axes,['compute_cycles','BRAM_18K','LUT'],['Compute cycles','BRAM_18K','LUT']):
             values=[int(rows[k][key]) for k in labels]
             bars=ax.bar(labels,values,color=['#b85c4a','#4384b2','#52946b'])
-            ax.bar_label(bars,padding=3,fontsize=9)
-            ax.set_title(title); ax.set_ylim(0,max(values)*1.2)
-        fig.suptitle('P=Q=4: unpartitioned / banked / packed (HLS)')
+            ax.bar_label(bars,padding=4,fontsize=12)
+            ax.set_title(title,fontsize=13); ax.set_ylim(0,max(values)*1.22)
+            ax.tick_params(axis='both',labelsize=12)
+        fig.suptitle('P=Q=4: unpartitioned / banked / packed (HLS)',fontsize=14)
         fig.tight_layout()
         save(fig,'memory_comparison')
     print('Figures generated from',len(rows),'synthesized configurations')

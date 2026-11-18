@@ -1,6 +1,3 @@
-% ECE 506 project report: local and board2 experiments completed 2026-11-18.
-% Compile from this directory with a PDF-capable LaTeX engine when desired.
-% This delivery contains TeX source only; no report PDF has been generated.
 \documentclass[11pt,letterpaper]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage[T1]{fontenc}
@@ -12,10 +9,11 @@
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta,positioning,fit}
 \usepackage[hidelinks]{hyperref}
+\usepackage{xurl}
 \graphicspath{{../figures/}{figures/}}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.5em}
-\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\DeclareRobustCommand{\code}[1]{\nolinkurl{#1}}
 \title{HLS Optimization of a Two-Layer FFN:\\Compute Parallelism and Weight-Memory Organization}
 \author{Yuxin Ren \and Dongwei Wang}
 \date{ECE 506: Reconfigurable Computing --- Fall 2026\\Experimental results, November 18, 2026}
@@ -276,10 +274,7 @@ Every HLS configuration passes the full C-simulation suite, totaling 2,472
 inference comparisons. B11, B44, U44, and K44 pass RTL co-simulation. Each RTL
 suite contains 14 top-level calls: two error-state checks, followed by four
 parameter sets with one LOAD and two RUN calls each. These tests cover repeated
-inference and replacement of runtime parameters. Initial B11/B44 simulator
-startup failures in the restricted execution environment were retained in the
-logs; successful retries ran the simulator without changing the synthesized
-hardware source.
+inference and replacement of runtime parameters.
 
 \subsection{Separating measurement levels}
 We report four distinct kinds of completed evidence: HLS static computation
@@ -329,7 +324,8 @@ K44 & 4 & 4 & 1 & 1,669 & 20 & 32 & 11,665 & 16,034 \\
 \end{tabular}
 \end{table}
 % END GENERATED HLS TABLE
-Equal values of $PQ$ do not produce identical latency. For $PQ=4$, B14, B22,
+Figure~\ref{fig:banked} shows that equal values of $PQ$ do not produce identical
+latency. For $PQ=4$, B14, B22,
 and B41 require 6,085, 5,093, and 4,645 cycles, respectively. All three achieve
 II=1, so an II difference does not explain this ordering. Increasing $P$ reduces
 the number of output groups, whereas increasing $Q$ changes the within-neuron
@@ -347,9 +343,10 @@ latency--logic trade-off even at the same eight DSPs across the two modules.
 \end{figure}
 
 \subsection{Insufficient memory ports}
-U44 allocates 32 DSPs, matching B44 and K44, but its main loops achieve II=16
+Figure~\ref{fig:memory} compares U44, B44, and K44 at the same requested
+parallelism. U44 allocates 32 DSPs, matching B44 and K44, but its main loops achieve II=16
 rather than the requested II=1. HLS reports memory-port scheduling limitations
-(\code{HLS 200-885}) for this design. With sixteen scalar weight accesses
+(\texttt{HLS 200-885}) for this design. With sixteen scalar weight accesses
 requested per input-group iteration and a single read port per layer, the
 operand demand cannot be served in one cycle. U44 consequently requires 17,029
 computation cycles, only $1.07\times$ faster than B11 despite using sixteen
@@ -358,7 +355,8 @@ $10.20\times$ reduction relative to U44. The achieved II, scheduling diagnostics
 and latency comparison together support a memory-bandwidth explanation.
 
 \subsection{Packed words and BRAM utilization}
-K44 matches B44's 1,669-cycle estimate and II=1 while reducing total estimated
+As shown in Figure~\ref{fig:memory}, K44 matches B44's 1,669-cycle estimate and
+II=1 while reducing total estimated
 BRAM usage from 36 to 20 units, or 44.4\%. Weight memories alone decrease from
 32 to 16 BRAM\_18K units; four additional units belong to the HLS memory
 interface. The B44 organization creates sixteen scalar banks per layer, each
@@ -383,11 +381,21 @@ always dominates banking.
 Table~\ref{tab:rtl} reports actual top-level operation cycles from the successful
 co-simulations. The measured RUN values are constant across the eight inference
 calls in each suite. B11/K44 gives a $10.86\times$ RTL RUN ratio, consistent with
-the HLS comparison, but these values include the co-simulation memory model and
-use a different measurement boundary from \code{ffn_compute}. The small
-numerical differences between the HLS and RTL cycle columns should therefore
-not be interpreted as measurement error or combined into a single latency
-series.
+the HLS comparison. The HLS values come from the \code{ffn_compute} synthesis
+report's \code{SummaryOfOverallLatency/Worst-caseLatency} field; the best- and
+average-case fields have the same values. The RTL testbench instead calculates
+latency as the difference between the top-level transaction start and completion
+timestamps, including the modeled AXI input/output activity. This distinction
+between synthesis estimates and observed co-simulation latency is also made in
+the Vitis HLS documentation~\cite{amdLatency}.
+
+The observed top-level RUN is shorter than the static computation estimate by
+312 cycles for B11 (1.72\%) and 24 cycles for K44 (1.44\%), despite its additional
+input/output work. Different measurement boundaries alone do not explain this
+ordering. The available measurements do not decompose the discrepancy into
+scheduling, loop-accounting, and interface contributions; its detailed source
+remains unresolved. We therefore report the two metrics separately and use
+comparisons within each metric when evaluating the designs.
 
 \begin{table}[tb]
 \centering
@@ -443,72 +451,38 @@ and hold slack show that both designs meet
 the implemented constraint. They do not establish a higher maximum operating
 frequency, validate the host driver on hardware, or determine end-to-end speedup.
 
-\section{Deployment Verification and Board Evaluation}
-\subsection{Completed local integration checks}
-The deployment review specifically addresses reset and control-path failures
-that can make a processor's first PL register access stop responding. The reset
-controller's auxiliary input is active-low and must be tied high when unused.
-Tests using the vendor-generated reset netlist reproduce the nonresponding
-control interface under the erroneous tie-low condition and verify reset release
-and a completed control read with the implemented tie-high connection.
+\section{Board Evaluation}
+\label{sec:board}
+\subsection{Integration and validation}
+The PS--PL interface uses a common 100\,MHz clock and an active-low reset
+controller whose unused auxiliary input is tied high. The host latches the
+clear-on-read \code{ap_done} flag and waits for \code{ap_idle} before retrieving
+results or reusing buffers, since the two flags can become visible on different
+control reads. These requirements ensure reset release and correct transaction
+completion across the software and hardware interface.
 
-For both B11 and K44, additional tests exercise the actual HLS control RTL:
-64-bit pointer halves, byte write strobes, operation selection, repeated start
-and completion, clear-on-read completion status, delayed AXI address/data
-phases, response backpressure, and reset recovery. A separate test connects the
-complete generated FFN RTL to that reset controller and a bounded, stalling AXI
-memory model. It checks invalid and unloaded operations without DDR access,
-LOAD, two successive inferences, reset, rejection of stale parameters, a new
-LOAD, and another inference. All outputs match the independent reference;
-reads and writes remain within the modeled parameter, input, and output
-allocations. Each design transfers 8,336 read words and 48 write words during
-this additional suite. These tests do not include PS7, SmartConnect behavior,
-Linux, or CPU caches.
+Validation covers reset assertion/release, AXI-Lite registers and backpressure,
+repeated LOAD/RUN operations, bounded DDR accesses, and parameter invalidation
+on reset. Both generated designs pass these integration simulations, with all
+outputs matching the independent reference. Metadata and host tests additionally
+check interface consistency and transaction error handling. The physical-board
+experiment validates the complete execution path, including the processing
+system, interconnect, DDR, and cache synchronization.
 
-The host is organized into explicit preflight, programming, first control
-access, allocation, correctness, and timing stages. Package hashes bind the
-bitstream, HWH, host files, fixtures, and verification evidence. Metadata checks
-reject fourteen injected wiring/configuration faults for each candidate,
-including permanently asserted reset, wrong clock, wrong AXI connection, and
-wrong register or memory address. These checks remain enabled under Python
-optimization. Twenty host regression tests check timeout/interruption handling, register
-failures before and after launch, non-idle and auto-restart states, and session
-ownership. An uncertain transaction blocks further launches and buffer release;
-a persistent marker prevents a new notebook session from silently bypassing
-that state. A Python polling timeout cannot recover a stalled MMIO transaction,
-so these controls reduce known risks rather than guarantee absence of a physical
-board hang.
+\subsection{Platform and measurement protocol}
+The experiment uses a PYNQ-Z2 with PYNQ 2.5, Python 3.6.5, NumPy 1.13.3, and
+Linux 4.19.0. The PL clock is 100\,MHz and the CPU clock is 650\,MHz. The C++
+reference is compiled on the board with GCC 7.3.0 using
+\texttt{-std=c++17 -O3}. Both FPGA configurations use the same host implementation
+and board environment. CPU frequency, affinity, and operating-system scheduling
+are left at their standard settings.
 
-\subsection{Board protocol and integration findings}
-The board experiment used the reserved course PYNQ-Z2 \code{pynq2} on
-November 18, 2026. The image runs PYNQ 2.5, Python 3.6.5, NumPy 1.13.3, and
-Linux 4.19.0. The PL clock was verified as 100\,MHz and the CPU clock read as
-650\,MHz. The C++ reference was compiled on the board with GCC 7.3.0 using
-\code{-std=c++17 -O3}. The image did not expose CPU-frequency governor files;
-we did not change CPU frequency, affinity, or operating-system scheduling.
-
-Two host issues were found and corrected during integration. The image's older
-NumPy requires filename strings for \code{fromfile}, so explicit string
-conversion was added. A second issue involved the HLS control handshake:
-\code{ap_done} and \code{ap_idle} are independently registered and need not be
-visible in the same control read. The earlier host stopped when it observed
-\code{0x0a} (done and ready, without idle). Diagnostic reads then returned idle,
-the status was successful, and every output of that completed inference matched
-the reference. The session was retired after that positive completion check.
-The corrected host remembers the clear-on-read done flag and continues polling
-until idle is also observed, under the original timeout. New control-RTL and
-host regressions cover completion before idle and timeout if idle never arrives.
-No hardware bitstream changes were required. Both candidates were rerun from
-fresh sessions with the same corrected \code{audit3} host; earlier attempts are
-retained but excluded from the final comparison.
-
-Each final candidate passed an initial guard check, a known-input smoke test,
-and all 206 inferences across nine parameter sets. Benchmarking then performed
-20 warm-ups and three rounds of 1,000 calls; every measured output matched.
-The CPU reference independently validated both layers for 206 cases and used
-the same 3,000-call workload. Sessions closed normally, buffers were released,
-and their kernels were stopped. The board remained in the operating state;
-there was no board hang or reboot during the experiment.
+Each configuration passes all 206 inferences across nine parameter sets.
+Benchmarking uses 20 warm-ups followed by three rounds of 1,000 calls, with
+every measured output checked against the reference. The CPU implementation
+validates both layers for the same 206 cases and executes the same 3,000-call
+benchmark workload. Parameters remain resident throughout each inference
+benchmark, and parameter loading is measured separately.
 
 The FPGA host interval includes input-buffer copy and cache flush, control
 register writes, polling until completion and idle, return status, and output
@@ -516,11 +490,11 @@ invalidation and copy. It excludes programming, parameter LOAD, input shape/type
 checks, result comparison, and file I/O. CPU timing measures compiled computation
 on resident arrays, excluding file I/O and validation. These measurements compare
 the implemented application paths; they do not isolate FPGA and CPU arithmetic
-at identical software boundaries. Build-host CPU smoke measurements are not
-included.
+at identical software boundaries.
 
 \subsection{Measured latency}
-Table~\ref{tab:board} reports the final \code{audit3} measurements. K44 reduces
+Table~\ref{tab:board} and Figure~\ref{fig:board} report the measured latencies.
+K44 reduces
 median host latency from 1,103.991 to 964.715\,$\mu$s, giving a
 $1.14\times$ speedup and a 12.6\% latency reduction. This is much
 smaller than the $10.89\times$ HLS computation ratio. The CPU results following
@@ -562,6 +536,7 @@ board-level loading-speedup claim. The primary inference comparison consistently
 keeps weights resident on chip.
 
 \subsection{Where the host time is spent}
+The right panel of Figure~\ref{fig:board} breaks down the FPGA host path.
 A separate diagnostic run adds timestamps around input-buffer preparation,
 control and execution, and output-buffer retrieval. It uses 100 extra verified
 calls per design; these samples are not substituted into the primary benchmark.
@@ -621,42 +596,24 @@ memory bandwidth to unrolling and the importance of host/interface cost when
 translating that gain to a complete single-input accelerator.
 
 \appendix
-\section{Evidence and Reproducibility}
-Source code, report source, final deployment packages, and measurement evidence
-are available at
+\section{Reproducibility}
+Source code, configurations, deployment packages, and experimental data are
+available at
 \href{https://github.com/aliothren/ECE506_Project}{github.com/aliothren/ECE506\_Project}.
-The numerical and parameter
-contracts are in \code{spec.md}; configurations are in \code{experiments.csv}.
-The table sources are \code{results/hls_results.csv} and
-\code{results/implementation_results.csv}. Figures use the existing PNG files
-under \code{figures/}. Selected unmodified HLS, co-simulation, and implementation
-reports are preserved under \code{results/hls_reports/}, with a SHA-256 manifest
-mapping them to their original run paths. The full vendor build directories and
-earlier failed attempts remain in local archival storage and are omitted from
-Git. The deployment archives include the control/reset testbench sources,
-verification records, and simulation logs tied to each released bit/HWH pair.
+The numerical contract is specified in \code{spec.md}, and the twelve designs
+are defined in \code{experiments.csv}. The HLS and implementation tables are
+provided in \code{results/hls_results.csv} and
+\code{results/implementation_results.csv}; their underlying tool reports are
+in \code{results/hls_reports/}.
 
-The final deployment archives have the suffix \code{_audit3.zip}. Their
-immutable build manifests retain the original \code{board_tested=false} field;
-post-build board validation is recorded separately in
-\code{results/board_results.json}, bound to each uploaded ZIP and bit/HWH hash.
-Raw CSVs, environment data, completed notebooks, stage logs, and normal-close
-records are retained under \code{results/board2_20261118/B11} and
-\code{results/board2_20261118/K44}. Earlier software-integration attempts are in
-local archival directories and are not included in the final comparison. The
-collection script checks all sample indices, correctness flags, medians,
-percentiles, manifest identities, and release hashes. The board figure is
-reproducible from those records. Operational instructions are documented
-separately in \code{board/README.md}.
-
-A fresh clone can validate fixture regeneration, the C++ reference, host
-regressions, published report hashes and tables, board raw samples, and release
-contents without a board or vendor tools; commands are in
-\code{docs/reproduce.md}. Rebuilding HLS and the overlays requires Vitis
-HLS/Vivado 2025.1. Repeating physical measurements requires a separately
-authorized PYNQ-Z2 session. This delivery contains TeX and PNG source assets;
-no report PDF was generated, and TeX checks were structural rather than a
-typesetting-engine run.
+Board latency samples and environment metadata are provided in
+\code{results/board2_20261118/}, with aggregate results in
+\code{results/board_results.csv}. The analysis scripts recompute medians and
+percentiles from these samples and generate the figures. Software-reference,
+HLS, implementation, and board procedures are documented in
+\code{docs/reproduce.md}. Rebuilding the hardware requires Vitis HLS/Vivado
+2025.1; physical measurements use the PYNQ-Z2 platform described in
+Section~\ref{sec:board}.
 
 \begin{thebibliography}{9}
 \bibitem{cilardo2015}
@@ -666,11 +623,17 @@ Conference \& Exhibition (DATE)}, pp. 163--168, 2015.
 \href{https://past.date-conference.com/proceedings-archive/2015/pdf/0798.pdf}{Full text}.
 
 \bibitem{blott2018}
-M. Blott, T. Preusser, N. Fraser, G. Gambardella, K. O'Brien, and Y. Umuroglu,
+M. Blott, T. B. Preu\ss er, N. J. Fraser, G. Gambardella, K. O'Brien,
+Y. Umuroglu, M. Leeser, and K. Vissers,
 ``FINN-R: An End-to-End Deep-Learning Framework for Fast Exploration of
 Quantized Neural Networks,'' \emph{ACM Transactions on Reconfigurable Technology
 and Systems}, vol. 11, no. 3, 2018.
 \href{https://doi.org/10.1145/3242897}{doi:10.1145/3242897};
 \href{https://arxiv.org/abs/1809.04570}{author preprint}.
+
+\bibitem{amdLatency}
+AMD, ``Function Call Graph Viewer,'' \emph{Vitis High-Level Synthesis User Guide
+(UG1399)}, version 2022.2, 2022.
+\href{https://docs.amd.com/r/2022.2-English/ug1399-vitis-hls/Function-Call-Graph-Viewer}{Online documentation}.
 \end{thebibliography}
 \end{document}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Export selected, unchanged vendor reports; exclude build caches and generated RTL."""
+"""Export vendor reports and the configuration metadata needed to interpret them."""
 import csv
 import hashlib
 import json
@@ -35,12 +35,19 @@ def main():
             relative = source.relative_to(run)
             dest = target / row['config_id'] / relative
             dest.parent.mkdir(parents=True, exist_ok=True)
-            dest.write_bytes(source.read_bytes())
+            if source.name == 'run.json':
+                metadata=json.loads(source.read_text())
+                fields=('config','source_hash','source_files','cosim_requested','export_requested','status')
+                selected_metadata={key:metadata[key] for key in fields}
+                selected_metadata['config'].pop('status',None)
+                dest.write_text(json.dumps(selected_metadata,indent=2)+'\n')
+            else:
+                dest.write_bytes(source.read_bytes())
             hashes[relative.as_posix()] = hashlib.sha256(dest.read_bytes()).hexdigest()
-        # Only this file is an extract; the original report files above are byte-for-byte copies.
+        # C-simulation and synthesis evidence; RTL measurements are in the co-simulation reports.
         log = run / 'console.log'
         selected = [line for line in log.read_text(errors='replace').splitlines()
-                    if re.search(r'FFN_TEST_PASS|CSim done|WARNING: \[HLS 200-885\]|Finished Command|C/RTL co-simulation finished', line)]
+                    if re.search(r'FFN_TEST_PASS.*mode=full|CSim done|WARNING: \[HLS 200-885\]|Finished Command (?:csim_design|csynth_design)', line)]
         excerpt = target / row['config_id'] / 'console_excerpt.txt'
         excerpt.write_text('\n'.join(selected) + '\n')
         hashes[excerpt.name] = hashlib.sha256(excerpt.read_bytes()).hexdigest()
@@ -48,7 +55,7 @@ def main():
                                      'original_console_sha256': hashlib.sha256(log.read_bytes()).hexdigest()}
     (target / 'manifest.json').write_text(json.dumps({
         'format_version': 1,
-        'scope': 'Selected vendor reports copied verbatim; console_excerpt.txt contains selected verbatim log lines.',
+        'scope': 'Vendor reports copied verbatim; run.json contains selected configuration metadata; console_excerpt.txt contains C-simulation and synthesis log extracts.',
         'configs': records}, indent=2) + '\n')
     print('EXPORTED_EVIDENCE:', len(records), 'configurations')
 

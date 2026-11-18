@@ -1,9 +1,9 @@
-# FFN board package — audited revision audit3
+# FFN board operation
 
-Use the two `*_audit3.zip` archives listed in `deploy/README.md`. This package is
+Use the B11 and K44 archives listed in `deploy/README.md`. The design is
 for the course **PYNQ-Z2 / XC7Z020**, using its existing PYNQ Linux image. It has
 passed local simulation, implementation, and physical-board validation on
-November 18, 2026. See [measured results](../results/BOARD_RESULTS.md).
+November 18, 2026.
 Start with B11. Run K44 only after B11 passes and its session closes normally.
 
 ## Before the reserved board session
@@ -78,7 +78,7 @@ do not label HLS cycles or local x86 CPU timings as board latency. The completed
 experiment measured a 1.14x B11/K44 host speedup; K44's host path took 6.75x the
 corresponding CPU computation time.
 
-The audit manifest binds the local control tests to this exact bit/HWH pair. The
+The package manifest binds the local control tests to this exact bit/HWH pair. The
 RTL test covers the generated FFN, vendor reset controller and a bounded, stalling
 AXI memory model. It does not simulate PS7, SmartConnect, Linux, or CPU caches.
 
@@ -86,4 +86,6 @@ PYNQ API references: [Overlay](https://pynq.readthedocs.io/en/v2.7.0/pynq_librar
 [MMIO](https://github.com/Xilinx/PYNQ/blob/master/docs/source/overlay_design_methodology/pspl_interface.rst),
 [buffer synchronization](https://pynq.readthedocs.io/en/v2.6.1/pynq_libraries/allocate.html).
 
-Revision audit3 converts NumPy filenames to strings for the PYNQ 2.5 image and latches the clear-on-read completion flag while waiting for the independently registered idle flag. Hardware bit/HWH contents are unchanged.
+
+The host uses filename strings for NumPy input and latches the clear-on-read
+completion flag while waiting for the independently registered idle flag.
